@@ -31,152 +31,183 @@ namespace GestionMaterialesConstruccion.Formularios
 
         private void InitializeComponent()
         {
-            this.lblMaterial = new System.Windows.Forms.Label();
-            this.cmbMaterial = new System.Windows.Forms.ComboBox();
-            this.lblCantidad = new System.Windows.Forms.Label();
-            this.numCantidad = new System.Windows.Forms.NumericUpDown();
-            this.lblCodigo = new System.Windows.Forms.Label();
-            this.txtCodigo = new System.Windows.Forms.TextBox();
-            this.lblPrecioParcial = new System.Windows.Forms.Label();
-            this.numPrecioParcial = new System.Windows.Forms.NumericUpDown();
-            this.lstDetalle = new System.Windows.Forms.ListBox();
-            this.btnAceptar = new System.Windows.Forms.Button();
-            this.btnModificar = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnCerrar = new System.Windows.Forms.Button();
-            this.lblMensaje = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.numCantidad)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numPrecioParcial)).BeginInit();
-            this.SuspendLayout();
-            //
+            lblMaterial = new Label();
+            cmbMaterial = new ComboBox();
+            lblCantidad = new Label();
+            numCantidad = new NumericUpDown();
+            lblCodigo = new Label();
+            txtCodigo = new TextBox();
+            lblPrecioParcial = new Label();
+            numPrecioParcial = new NumericUpDown();
+            lstDetalle = new ListBox();
+            btnAceptar = new Button();
+            btnModificar = new Button();
+            btnEliminar = new Button();
+            btnCancelar = new Button();
+            btnCerrar = new Button();
+            lblMensaje = new Label();
+            ((System.ComponentModel.ISupportInitialize)numCantidad).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numPrecioParcial).BeginInit();
+            SuspendLayout();
+            // 
             // lblMaterial
-            //
-            this.lblMaterial.Location = new System.Drawing.Point(20, 20);
-            this.lblMaterial.Size = new System.Drawing.Size(90, 23);
-            this.lblMaterial.Text = "Material";
-            //
+            // 
+            lblMaterial.Location = new Point(20, 20);
+            lblMaterial.Name = "lblMaterial";
+            lblMaterial.Size = new Size(90, 23);
+            lblMaterial.TabIndex = 0;
+            lblMaterial.Text = "Material";
+            // 
             // cmbMaterial
-            //
-            this.cmbMaterial.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbMaterial.Location = new System.Drawing.Point(120, 17);
-            this.cmbMaterial.Size = new System.Drawing.Size(200, 23);
-            //
+            // 
+            cmbMaterial.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbMaterial.Location = new Point(120, 17);
+            cmbMaterial.Name = "cmbMaterial";
+            cmbMaterial.Size = new Size(200, 23);
+            cmbMaterial.TabIndex = 1;
+            // 
             // lblCantidad
-            //
-            this.lblCantidad.Location = new System.Drawing.Point(20, 55);
-            this.lblCantidad.Size = new System.Drawing.Size(90, 23);
-            this.lblCantidad.Text = "Cantidad";
-            //
+            // 
+            lblCantidad.Location = new Point(20, 55);
+            lblCantidad.Name = "lblCantidad";
+            lblCantidad.Size = new Size(90, 23);
+            lblCantidad.TabIndex = 2;
+            lblCantidad.Text = "Cantidad";
+            // 
             // numCantidad
-            //
-            this.numCantidad.Location = new System.Drawing.Point(120, 52);
-            this.numCantidad.Size = new System.Drawing.Size(200, 23);
-            this.numCantidad.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
-            //
+            // 
+            numCantidad.Location = new Point(120, 52);
+            numCantidad.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
+            numCantidad.Name = "numCantidad";
+            numCantidad.Size = new Size(200, 23);
+            numCantidad.TabIndex = 3;
+            // 
             // lblCodigo
-            //
-            this.lblCodigo.Location = new System.Drawing.Point(20, 90);
-            this.lblCodigo.Size = new System.Drawing.Size(90, 23);
-            this.lblCodigo.Text = "Codigo";
-            //
+            // 
+            lblCodigo.Location = new Point(20, 90);
+            lblCodigo.Name = "lblCodigo";
+            lblCodigo.Size = new Size(90, 23);
+            lblCodigo.TabIndex = 4;
+            lblCodigo.Text = "Codigo";
+            // 
             // txtCodigo
-            //
-            this.txtCodigo.Location = new System.Drawing.Point(120, 87);
-            this.txtCodigo.Size = new System.Drawing.Size(200, 23);
-            //
+            // 
+            txtCodigo.Location = new Point(120, 87);
+            txtCodigo.Name = "txtCodigo";
+            txtCodigo.Size = new Size(200, 23);
+            txtCodigo.TabIndex = 5;
+            // 
             // lblPrecioParcial
-            //
-            this.lblPrecioParcial.Location = new System.Drawing.Point(20, 125);
-            this.lblPrecioParcial.Size = new System.Drawing.Size(90, 23);
-            this.lblPrecioParcial.Text = "Precio Parcial";
-            //
+            // 
+            lblPrecioParcial.Location = new Point(20, 125);
+            lblPrecioParcial.Name = "lblPrecioParcial";
+            lblPrecioParcial.Size = new Size(90, 23);
+            lblPrecioParcial.TabIndex = 6;
+            lblPrecioParcial.Text = "Precio Parcial";
+            // 
             // numPrecioParcial
-            //
-            this.numPrecioParcial.DecimalPlaces = 2;
-            this.numPrecioParcial.Location = new System.Drawing.Point(120, 122);
-            this.numPrecioParcial.Size = new System.Drawing.Size(200, 23);
-            this.numPrecioParcial.Maximum = new decimal(new int[] { 100000000, 0, 0, 0 });
-            //
+            // 
+            numPrecioParcial.DecimalPlaces = 2;
+            numPrecioParcial.Location = new Point(120, 122);
+            numPrecioParcial.Maximum = new decimal(new int[] { 100000000, 0, 0, 0 });
+            numPrecioParcial.Name = "numPrecioParcial";
+            numPrecioParcial.Size = new Size(200, 23);
+            numPrecioParcial.TabIndex = 7;
+            // 
             // lstDetalle
-            //
-            this.lstDetalle.Location = new System.Drawing.Point(360, 17);
-            this.lstDetalle.Size = new System.Drawing.Size(320, 200);
-            this.lstDetalle.SelectedIndexChanged += new System.EventHandler(this.lstDetalle_SelectedIndexChanged);
-            //
+            // 
+            lstDetalle.ItemHeight = 15;
+            lstDetalle.Location = new Point(360, 17);
+            lstDetalle.Name = "lstDetalle";
+            lstDetalle.Size = new Size(320, 199);
+            lstDetalle.TabIndex = 8;
+            lstDetalle.SelectedIndexChanged += lstDetalle_SelectedIndexChanged;
+            // 
             // btnAceptar
-            //
-            this.btnAceptar.Location = new System.Drawing.Point(20, 170);
-            this.btnAceptar.Size = new System.Drawing.Size(90, 30);
-            this.btnAceptar.Text = "Aceptar";
-            this.btnAceptar.UseVisualStyleBackColor = true;
-            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
-            //
+            // 
+            btnAceptar.Location = new Point(20, 170);
+            btnAceptar.Name = "btnAceptar";
+            btnAceptar.Size = new Size(90, 30);
+            btnAceptar.TabIndex = 9;
+            btnAceptar.Text = "Aceptar";
+            btnAceptar.UseVisualStyleBackColor = true;
+            btnAceptar.Click += btnAceptar_Click;
+            // 
             // btnModificar
-            //
-            this.btnModificar.Location = new System.Drawing.Point(120, 170);
-            this.btnModificar.Size = new System.Drawing.Size(90, 30);
-            this.btnModificar.Text = "Modificar";
-            this.btnModificar.UseVisualStyleBackColor = true;
-            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
-            //
+            // 
+            btnModificar.Location = new Point(120, 170);
+            btnModificar.Name = "btnModificar";
+            btnModificar.Size = new Size(90, 30);
+            btnModificar.TabIndex = 10;
+            btnModificar.Text = "Modificar";
+            btnModificar.UseVisualStyleBackColor = true;
+            btnModificar.Click += btnModificar_Click;
+            // 
             // btnEliminar
-            //
-            this.btnEliminar.Location = new System.Drawing.Point(220, 170);
-            this.btnEliminar.Size = new System.Drawing.Size(90, 30);
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
-            //
+            // 
+            btnEliminar.Location = new Point(220, 170);
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.Size = new Size(90, 30);
+            btnEliminar.TabIndex = 11;
+            btnEliminar.Text = "Eliminar";
+            btnEliminar.UseVisualStyleBackColor = true;
+            btnEliminar.Click += btnEliminar_Click;
+            // 
             // btnCancelar
-            //
-            this.btnCancelar.Location = new System.Drawing.Point(320, 170);
-            this.btnCancelar.Size = new System.Drawing.Size(90, 30);
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            //
+            // 
+            btnCancelar.Location = new Point(20, 206);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(90, 30);
+            btnCancelar.TabIndex = 12;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
+            // 
             // btnCerrar
-            //
-            this.btnCerrar.Location = new System.Drawing.Point(600, 225);
-            this.btnCerrar.Size = new System.Drawing.Size(80, 30);
-            this.btnCerrar.Text = "Cerrar";
-            this.btnCerrar.UseVisualStyleBackColor = true;
-            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
-            //
+            // 
+            btnCerrar.Location = new Point(600, 225);
+            btnCerrar.Name = "btnCerrar";
+            btnCerrar.Size = new Size(80, 30);
+            btnCerrar.TabIndex = 13;
+            btnCerrar.Text = "Cerrar";
+            btnCerrar.UseVisualStyleBackColor = true;
+            btnCerrar.Click += btnCerrar_Click;
+            // 
             // lblMensaje
-            //
-            this.lblMensaje.ForeColor = System.Drawing.Color.Red;
-            this.lblMensaje.Location = new System.Drawing.Point(20, 225);
-            this.lblMensaje.Size = new System.Drawing.Size(560, 40);
-            //
+            // 
+            lblMensaje.ForeColor = Color.Red;
+            lblMensaje.Location = new Point(20, 225);
+            lblMensaje.Name = "lblMensaje";
+            lblMensaje.Size = new Size(560, 40);
+            lblMensaje.TabIndex = 14;
+            // 
             // FrmDetalleCompra
-            //
-            this.ClientSize = new System.Drawing.Size(700, 270);
-            this.Controls.Add(this.lblMaterial);
-            this.Controls.Add(this.cmbMaterial);
-            this.Controls.Add(this.lblCantidad);
-            this.Controls.Add(this.numCantidad);
-            this.Controls.Add(this.lblCodigo);
-            this.Controls.Add(this.txtCodigo);
-            this.Controls.Add(this.lblPrecioParcial);
-            this.Controls.Add(this.numPrecioParcial);
-            this.Controls.Add(this.lstDetalle);
-            this.Controls.Add(this.btnAceptar);
-            this.Controls.Add(this.btnModificar);
-            this.Controls.Add(this.btnEliminar);
-            this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.btnCerrar);
-            this.Controls.Add(this.lblMensaje);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.Name = "FrmDetalleCompra";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Detalle de Compra";
-            ((System.ComponentModel.ISupportInitialize)(this.numCantidad)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numPrecioParcial)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            // 
+            ClientSize = new Size(700, 270);
+            Controls.Add(lblMaterial);
+            Controls.Add(cmbMaterial);
+            Controls.Add(lblCantidad);
+            Controls.Add(numCantidad);
+            Controls.Add(lblCodigo);
+            Controls.Add(txtCodigo);
+            Controls.Add(lblPrecioParcial);
+            Controls.Add(numPrecioParcial);
+            Controls.Add(lstDetalle);
+            Controls.Add(btnAceptar);
+            Controls.Add(btnModificar);
+            Controls.Add(btnEliminar);
+            Controls.Add(btnCancelar);
+            Controls.Add(btnCerrar);
+            Controls.Add(lblMensaje);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
+            Name = "FrmDetalleCompra";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Detalle de Compra";
+            ((System.ComponentModel.ISupportInitialize)numCantidad).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numPrecioParcial).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
     }
 }
