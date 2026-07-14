@@ -22,82 +22,88 @@ namespace GestionMaterialesConstruccion.Formularios
 
         private void InitializeComponent()
         {
-            this.lblBienvenida = new System.Windows.Forms.Label();
-            this.btnProveedores = new System.Windows.Forms.Button();
-            this.btnMateriales = new System.Windows.Forms.Button();
-            this.btnCompras = new System.Windows.Forms.Button();
-            this.btnEmpleados = new System.Windows.Forms.Button();
-            this.btnCerrarSesion = new System.Windows.Forms.Button();
-            this.SuspendLayout();
-            //
+            lblBienvenida = new Label();
+            btnProveedores = new Button();
+            btnMateriales = new Button();
+            btnCompras = new Button();
+            btnEmpleados = new Button();
+            btnCerrarSesion = new Button();
+            SuspendLayout();
+            // 
             // lblBienvenida
-            //
-            this.lblBienvenida.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.lblBienvenida.Location = new System.Drawing.Point(30, 20);
-            this.lblBienvenida.Name = "lblBienvenida";
-            this.lblBienvenida.Size = new System.Drawing.Size(400, 30);
-            this.lblBienvenida.Text = "Bienvenido";
-            //
+            // 
+            lblBienvenida.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            lblBienvenida.Location = new Point(30, 20);
+            lblBienvenida.Name = "lblBienvenida";
+            lblBienvenida.Size = new Size(400, 30);
+            lblBienvenida.TabIndex = 0;
+            lblBienvenida.Text = "Bienvenido";
+            // 
             // btnProveedores
-            //
-            this.btnProveedores.Location = new System.Drawing.Point(30, 70);
-            this.btnProveedores.Name = "btnProveedores";
-            this.btnProveedores.Size = new System.Drawing.Size(360, 40);
-            this.btnProveedores.Text = "Gestionar Proveedores";
-            this.btnProveedores.UseVisualStyleBackColor = true;
-            this.btnProveedores.Click += new System.EventHandler(this.btnProveedores_Click);
-            //
+            // 
+            btnProveedores.Location = new Point(30, 70);
+            btnProveedores.Name = "btnProveedores";
+            btnProveedores.Size = new Size(360, 40);
+            btnProveedores.TabIndex = 1;
+            btnProveedores.Text = "Gestionar Proveedores";
+            btnProveedores.UseVisualStyleBackColor = true;
+            btnProveedores.Click += btnProveedores_Click;
+            // 
             // btnMateriales
-            //
-            this.btnMateriales.Location = new System.Drawing.Point(30, 120);
-            this.btnMateriales.Name = "btnMateriales";
-            this.btnMateriales.Size = new System.Drawing.Size(360, 40);
-            this.btnMateriales.Text = "Gestionar Materiales";
-            this.btnMateriales.UseVisualStyleBackColor = true;
-            this.btnMateriales.Click += new System.EventHandler(this.btnMateriales_Click);
-            //
+            // 
+            btnMateriales.Location = new Point(30, 120);
+            btnMateriales.Name = "btnMateriales";
+            btnMateriales.Size = new Size(360, 40);
+            btnMateriales.TabIndex = 2;
+            btnMateriales.Text = "Gestionar Materiales";
+            btnMateriales.UseVisualStyleBackColor = true;
+            btnMateriales.Click += btnMateriales_Click;
+            // 
             // btnCompras
-            //
-            this.btnCompras.Location = new System.Drawing.Point(30, 170);
-            this.btnCompras.Name = "btnCompras";
-            this.btnCompras.Size = new System.Drawing.Size(360, 40);
-            this.btnCompras.Text = "Gestionar Compras";
-            this.btnCompras.UseVisualStyleBackColor = true;
-            this.btnCompras.Click += new System.EventHandler(this.btnCompras_Click);
-            //
+            // 
+            btnCompras.Location = new Point(30, 170);
+            btnCompras.Name = "btnCompras";
+            btnCompras.Size = new Size(360, 40);
+            btnCompras.TabIndex = 3;
+            btnCompras.Text = "Gestionar Compras";
+            btnCompras.UseVisualStyleBackColor = true;
+            btnCompras.Click += btnCompras_Click;
+            // 
             // btnEmpleados
-            //
-            this.btnEmpleados.Location = new System.Drawing.Point(30, 220);
-            this.btnEmpleados.Name = "btnEmpleados";
-            this.btnEmpleados.Size = new System.Drawing.Size(360, 40);
-            this.btnEmpleados.Text = "Gestionar Empleados (solo Administrador)";
-            this.btnEmpleados.UseVisualStyleBackColor = true;
-            this.btnEmpleados.Click += new System.EventHandler(this.btnEmpleados_Click);
-            //
+            // 
+            btnEmpleados.Location = new Point(30, 220);
+            btnEmpleados.Name = "btnEmpleados";
+            btnEmpleados.Size = new Size(360, 40);
+            btnEmpleados.TabIndex = 4;
+            btnEmpleados.Text = "Gestionar Empleados ";
+            btnEmpleados.UseVisualStyleBackColor = true;
+            btnEmpleados.Click += btnEmpleados_Click;
+            // 
             // btnCerrarSesion
-            //
-            this.btnCerrarSesion.Location = new System.Drawing.Point(30, 280);
-            this.btnCerrarSesion.Name = "btnCerrarSesion";
-            this.btnCerrarSesion.Size = new System.Drawing.Size(360, 30);
-            this.btnCerrarSesion.Text = "Cerrar sesión";
-            this.btnCerrarSesion.UseVisualStyleBackColor = true;
-            this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
-            //
+            // 
+            btnCerrarSesion.Location = new Point(30, 280);
+            btnCerrarSesion.Name = "btnCerrarSesion";
+            btnCerrarSesion.Size = new Size(360, 30);
+            btnCerrarSesion.TabIndex = 5;
+            btnCerrarSesion.Text = "Cerrar sesión";
+            btnCerrarSesion.UseVisualStyleBackColor = true;
+            btnCerrarSesion.Click += btnCerrarSesion_Click;
+            // 
             // FrmPrincipal
-            //
-            this.ClientSize = new System.Drawing.Size(420, 340);
-            this.Controls.Add(this.lblBienvenida);
-            this.Controls.Add(this.btnProveedores);
-            this.Controls.Add(this.btnMateriales);
-            this.Controls.Add(this.btnCompras);
-            this.Controls.Add(this.btnEmpleados);
-            this.Controls.Add(this.btnCerrarSesion);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.Name = "FrmPrincipal";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Falcone SA - Gestión de Materiales de Construcción";
-            this.ResumeLayout(false);
+            // 
+            ClientSize = new Size(420, 340);
+            Controls.Add(lblBienvenida);
+            Controls.Add(btnProveedores);
+            Controls.Add(btnMateriales);
+            Controls.Add(btnCompras);
+            Controls.Add(btnEmpleados);
+            Controls.Add(btnCerrarSesion);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
+            Name = "FrmPrincipal";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Falcone SA - Gestión de Materiales de Construcción";
+            ResumeLayout(false);
         }
     }
 }
