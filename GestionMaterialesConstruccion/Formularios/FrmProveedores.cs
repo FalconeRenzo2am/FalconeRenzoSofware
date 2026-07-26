@@ -113,6 +113,11 @@ namespace GestionMaterialesConstruccion.Formularios
             LimpiarFormulario();
         }
 
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
         private void LimpiarFormulario()
         {
             proveedorSeleccionado = null;

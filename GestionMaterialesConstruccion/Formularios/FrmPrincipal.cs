@@ -1,4 +1,5 @@
 using GestionMaterialesConstruccion.Controladoras;
+using GestionMaterialesConstruccion.Modelos;
 
 namespace GestionMaterialesConstruccion.Formularios
 {
@@ -7,10 +8,20 @@ namespace GestionMaterialesConstruccion.Formularios
         public FrmPrincipal()
         {
             InitializeComponent();
+            ActualizarPantalla();
+        }
+
+        private void ActualizarPantalla()
+        {
             var empleado = SesionActual.EmpleadoActual;
             lblBienvenida.Text = empleado != null
-                ? $"Bienvenido, {empleado.Nombre} {empleado.Apellido} ({empleado.Rol})"
+                ? $"Bienvenido, {empleado.Nombre} {empleado.Apellido} ({empleado.Rol?.Nombre})"
                 : "Bienvenido";
+
+            btnProveedores.Enabled = SesionActual.TienePermiso(PermisosSistema.GestionProveedores);
+            btnMateriales.Enabled = SesionActual.TienePermiso(PermisosSistema.GestionMateriales);
+            btnCompras.Enabled = SesionActual.TienePermiso(PermisosSistema.GestionCompras);
+            btnEmpleados.Enabled = SesionActual.TienePermiso(PermisosSistema.GestionEmpleados);
         }
 
         private void btnProveedores_Click(object sender, EventArgs e)
@@ -33,14 +44,6 @@ namespace GestionMaterialesConstruccion.Formularios
 
         private void btnEmpleados_Click(object sender, EventArgs e)
         {
-            // CUD 0007/0011/0016 - Verificar Permisos
-            if (!SesionActual.TienePermisoAdministrador())
-            {
-                MessageBox.Show("No tiene permisos para gestionar empleados.", "Acceso denegado",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
             using var frm = new FrmEmpleados();
             frm.ShowDialog();
         }
@@ -53,10 +56,7 @@ namespace GestionMaterialesConstruccion.Formularios
             using var frmLogin = new FrmLogin();
             if (frmLogin.ShowDialog() == DialogResult.OK)
             {
-                var empleado = SesionActual.EmpleadoActual;
-                lblBienvenida.Text = empleado != null
-                    ? $"Bienvenido, {empleado.Nombre} {empleado.Apellido} ({empleado.Rol})"
-                    : "Bienvenido";
+                ActualizarPantalla();
                 Show();
             }
             else

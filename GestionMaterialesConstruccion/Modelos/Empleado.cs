@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GestionMaterialesConstruccion.Modelos
 {
@@ -13,8 +14,11 @@ namespace GestionMaterialesConstruccion.Modelos
         [Required, MaxLength(100)]
         public string Contrasenia { get; set; }
 
-        public RolEmpleado Rol { get; set; } = RolEmpleado.Empleado;
+        public int RolId { get; set; }
 
-        public override string ToString() => $"{Legajo} - {Apellido}, {Nombre} ({Rol})";
+        [ForeignKey(nameof(RolId))]
+        public Rol Rol { get; set; }
+
+        public override string ToString() => $"{Legajo} - {Apellido}, {Nombre} ({Rol?.Nombre})";
     }
 }

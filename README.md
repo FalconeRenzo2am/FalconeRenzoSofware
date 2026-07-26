@@ -13,7 +13,17 @@ de dominio, diagramas de secuencia y clases, y prototipos de interfaz).
   total de la compra)
 - **R04** Registrar Empleados
 - **R05** Iniciar sesión (email + contraseña) con verificación de permisos
-  (rol Administrador / Empleado)
+
+Además:
+- **Roles configurables**: desde "Gestionar Empleados" hay un botón **Crear
+  Rol** que abre un formulario para crear/editar roles, eligiendo a qué
+  pantallas del sistema da acceso cada uno (tildando permisos). El menú
+  principal habilita o deshabilita cada botón según los permisos del rol del
+  empleado logueado.
+- **Botón Volver**: todos los formularios de gestión (Proveedores,
+  Materiales, Compras, Detalle de Compra, Empleados, Roles) tienen un botón
+  "Volver" que cierra la pantalla actual y devuelve el control a la anterior,
+  sin necesidad de cerrar la ventana con la X.
 
 ## Arquitectura
 
@@ -21,7 +31,7 @@ El proyecto sigue la arquitectura en capas reflejada en los diagramas de
 secuencia de la documentación (Interfaz → Controladora → Entidad):
 
 - `Modelos/` – Entidades del dominio (Persona, Empleado, Proveedor, Material,
-  Compra, DetalleCompra).
+  Compra, DetalleCompra, Rol, Permiso).
 - `Datos/` – `AppDbContext` (Entity Framework Core, persistencia en SQL
   Server LocalDB).
 - `Controladoras/` – Lógica de negocio y validaciones de cada requerimiento.
@@ -38,8 +48,9 @@ secuencia de la documentación (Interfaz → Controladora → Entidad):
 3. Compilar el proyecto (restaura automáticamente los paquetes NuGet de
    Entity Framework Core al compilar).
 4. Ejecutar (F5). Al iniciar, la aplicación crea automáticamente la base de
-   datos `GestionMaterialesConstruccionDB` en `(localdb)\mssqllocaldb` si no
-   existe, junto con un usuario administrador de prueba:
+   datos `GestionMaterialesConstruccionDB_v2` en `(localdb)\mssqllocaldb` si
+   no existe, junto con dos roles (Administrador y Empleado) y un usuario
+   administrador de prueba:
    - **Email:** `admin@falconesa.com`
    - **Contraseña:** `admin123`
 
@@ -52,3 +63,7 @@ secuencia de la documentación (Interfaz → Controladora → Entidad):
   genera automáticamente a partir de las entidades mediante
   `Database.EnsureCreated()`, reflejando el diagrama de entidad-relación de
   la documentación.
+- Si venías de una versión anterior del proyecto (con el rol fijo
+  Administrador/Empleado), el nombre de la base de datos cambió a
+  `GestionMaterialesConstruccionDB_v2` para que se genere de cero con el
+  nuevo esquema de Roles y Permisos, sin necesidad de borrar nada a mano.

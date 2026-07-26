@@ -30,6 +30,7 @@ namespace GestionMaterialesConstruccion.Formularios
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnVolver;
         private System.Windows.Forms.Label lblMensaje;
 
         private void InitializeComponent()
@@ -51,6 +52,7 @@ namespace GestionMaterialesConstruccion.Formularios
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnVolver = new System.Windows.Forms.Button();
             this.lblMensaje = new System.Windows.Forms.Label();
             this.SuspendLayout();
             //
@@ -159,15 +161,23 @@ namespace GestionMaterialesConstruccion.Formularios
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             //
+            // btnVolver
+            //
+            this.btnVolver.Location = new System.Drawing.Point(20, 280);
+            this.btnVolver.Size = new System.Drawing.Size(100, 30);
+            this.btnVolver.Text = "Volver";
+            this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
+            //
             // lblMensaje
             //
             this.lblMensaje.ForeColor = System.Drawing.Color.Red;
-            this.lblMensaje.Location = new System.Drawing.Point(20, 280);
+            this.lblMensaje.Location = new System.Drawing.Point(20, 320);
             this.lblMensaje.Size = new System.Drawing.Size(660, 40);
             //
             // FrmProveedores
             //
-            this.ClientSize = new System.Drawing.Size(700, 330);
+            this.ClientSize = new System.Drawing.Size(700, 400);
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.lblApellido);
@@ -185,6 +195,7 @@ namespace GestionMaterialesConstruccion.Formularios
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.lblMensaje);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;

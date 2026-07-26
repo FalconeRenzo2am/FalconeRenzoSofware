@@ -26,7 +26,7 @@ namespace GestionMaterialesConstruccion.Formularios
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Button btnCerrar;
+        private System.Windows.Forms.Button btnVolver;
         private System.Windows.Forms.Label lblMensaje;
 
         private void InitializeComponent()
@@ -44,7 +44,7 @@ namespace GestionMaterialesConstruccion.Formularios
             btnModificar = new Button();
             btnEliminar = new Button();
             btnCancelar = new Button();
-            btnCerrar = new Button();
+            btnVolver = new Button();
             lblMensaje = new Label();
             ((System.ComponentModel.ISupportInitialize)numCantidad).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numPrecioParcial).BeginInit();
@@ -163,15 +163,15 @@ namespace GestionMaterialesConstruccion.Formularios
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += btnCancelar_Click;
             // 
-            // btnCerrar
+            // btnVolver
             // 
-            btnCerrar.Location = new Point(600, 225);
-            btnCerrar.Name = "btnCerrar";
-            btnCerrar.Size = new Size(80, 30);
-            btnCerrar.TabIndex = 13;
-            btnCerrar.Text = "Cerrar";
-            btnCerrar.UseVisualStyleBackColor = true;
-            btnCerrar.Click += btnCerrar_Click;
+            btnVolver.Location = new Point(600, 225);
+            btnVolver.Name = "btnVolver";
+            btnVolver.Size = new Size(80, 30);
+            btnVolver.TabIndex = 13;
+            btnVolver.Text = "Volver";
+            btnVolver.UseVisualStyleBackColor = true;
+            btnVolver.Click += btnVolver_Click;
             // 
             // lblMensaje
             // 
@@ -197,7 +197,7 @@ namespace GestionMaterialesConstruccion.Formularios
             Controls.Add(btnModificar);
             Controls.Add(btnEliminar);
             Controls.Add(btnCancelar);
-            Controls.Add(btnCerrar);
+            Controls.Add(btnVolver);
             Controls.Add(lblMensaje);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;

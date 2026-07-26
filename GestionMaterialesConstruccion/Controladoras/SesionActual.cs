@@ -3,8 +3,7 @@ using GestionMaterialesConstruccion.Modelos;
 namespace GestionMaterialesConstruccion.Controladoras
 {
     /// <summary>
-    /// Representa CUD 0007/0011/0016 "Verificar Permisos": mantiene el empleado logueado
-    /// y expone si tiene permisos de Administrador para las operaciones de gestión.
+    /// Mantiene el empleado logueado y expone qué permisos (accesos) le otorga su Rol.
     /// </summary>
     public static class SesionActual
     {
@@ -20,9 +19,9 @@ namespace GestionMaterialesConstruccion.Controladoras
             EmpleadoActual = null;
         }
 
-        public static bool TienePermisoAdministrador()
+        public static bool TienePermiso(string nombrePermiso)
         {
-            return EmpleadoActual != null && EmpleadoActual.Rol == RolEmpleado.Administrador;
+            return EmpleadoActual?.Rol?.Permisos.Any(p => p.Nombre == nombrePermiso) ?? false;
         }
     }
 }

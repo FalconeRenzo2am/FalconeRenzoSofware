@@ -12,13 +12,15 @@ namespace GestionMaterialesConstruccion.Controladoras
         public List<Empleado> ObtenerTodos()
         {
             using var contexto = new AppDbContext();
-            return contexto.Empleados.OrderBy(e => e.Apellido).ToList();
+            return contexto.Empleados.Include(e => e.Rol).OrderBy(e => e.Apellido).ToList();
         }
 
         public Empleado IniciarSesion(string email, string contrasenia)
         {
             using var contexto = new AppDbContext();
             var empleado = contexto.Empleados
+                .Include(e => e.Rol)
+                    .ThenInclude(r => r.Permisos)
                 .FirstOrDefault(e => e.Email == email && e.Contrasenia == contrasenia);
 
             if (empleado != null)
@@ -34,6 +36,9 @@ namespace GestionMaterialesConstruccion.Controladoras
             using var contexto = new AppDbContext();
             if (contexto.Empleados.Any(e => e.Email == empleado.Email))
                 throw new InvalidOperationException("Ya existe un empleado registrado con ese email.");
+
+            if (!contexto.Roles.Any(r => r.Id == empleado.RolId))
+                throw new InvalidOperationException("Debe seleccionar un rol válido.");
 
             contexto.Empleados.Add(empleado);
             contexto.SaveChanges();
@@ -51,13 +56,16 @@ namespace GestionMaterialesConstruccion.Controladoras
             if (contexto.Empleados.Any(e => e.Email == empleado.Email && e.Id != empleado.Id))
                 throw new InvalidOperationException("Ya existe otro empleado registrado con ese email.");
 
+            if (!contexto.Roles.Any(r => r.Id == empleado.RolId))
+                throw new InvalidOperationException("Debe seleccionar un rol válido.");
+
             existente.Nombre = empleado.Nombre;
             existente.Apellido = empleado.Apellido;
             existente.Dni = empleado.Dni;
             existente.Legajo = empleado.Legajo;
             existente.Email = empleado.Email;
             existente.Contrasenia = empleado.Contrasenia;
-            existente.Rol = empleado.Rol;
+            existente.RolId = empleado.RolId;
 
             contexto.SaveChanges();
         }
@@ -84,6 +92,9 @@ namespace GestionMaterialesConstruccion.Controladoras
             {
                 throw new ArgumentException("Todos los campos son obligatorios.");
             }
+
+            if (empleado.RolId <= 0)
+                throw new ArgumentException("Debe seleccionar un rol.");
         }
     }
 }

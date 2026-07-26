@@ -29,6 +29,7 @@ namespace GestionMaterialesConstruccion.Formularios
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnDetalle;
+        private System.Windows.Forms.Button btnVolver;
         private System.Windows.Forms.Label lblMensaje;
 
         private void InitializeComponent()
@@ -49,6 +50,7 @@ namespace GestionMaterialesConstruccion.Formularios
             btnEliminar = new Button();
             btnCancelar = new Button();
             btnDetalle = new Button();
+            btnVolver = new Button();
             lblMensaje = new Label();
             SuspendLayout();
             // 
@@ -188,18 +190,28 @@ namespace GestionMaterialesConstruccion.Formularios
             btnDetalle.Text = "Detalle de Compra...";
             btnDetalle.UseVisualStyleBackColor = true;
             btnDetalle.Click += btnDetalle_Click;
-            // 
+            //
+            // btnVolver
+            //
+            btnVolver.Location = new Point(20, 280);
+            btnVolver.Name = "btnVolver";
+            btnVolver.Size = new Size(100, 30);
+            btnVolver.TabIndex = 16;
+            btnVolver.Text = "Volver";
+            btnVolver.UseVisualStyleBackColor = true;
+            btnVolver.Click += btnVolver_Click;
+            //
             // lblMensaje
-            // 
+            //
             lblMensaje.ForeColor = Color.Red;
-            lblMensaje.Location = new Point(20, 280);
+            lblMensaje.Location = new Point(20, 320);
             lblMensaje.Name = "lblMensaje";
             lblMensaje.Size = new Size(660, 40);
-            lblMensaje.TabIndex = 16;
-            // 
+            lblMensaje.TabIndex = 17;
+            //
             // FrmCompras
-            // 
-            ClientSize = new Size(700, 330);
+            //
+            ClientSize = new Size(700, 400);
             Controls.Add(lblCodigo);
             Controls.Add(txtCodigo);
             Controls.Add(lblFecha);
@@ -216,6 +228,7 @@ namespace GestionMaterialesConstruccion.Formularios
             Controls.Add(btnEliminar);
             Controls.Add(btnCancelar);
             Controls.Add(btnDetalle);
+            Controls.Add(btnVolver);
             Controls.Add(lblMensaje);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;

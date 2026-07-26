@@ -9,14 +9,29 @@ namespace GestionMaterialesConstruccion.Formularios
     public partial class FrmEmpleados : Form
     {
         private readonly EmpleadoControladora controladora = new();
+        private readonly RolControladora controladoraRoles = new();
         private List<Empleado> empleados = new();
         private Empleado empleadoSeleccionado;
 
         public FrmEmpleados()
         {
             InitializeComponent();
-            cmbRol.DataSource = Enum.GetValues(typeof(RolEmpleado));
+            btnCrearRol.Enabled = SesionActual.TienePermiso(PermisosSistema.GestionRoles);
+            CargarRoles();
             CargarLista();
+        }
+
+        private void CargarRoles()
+        {
+            var seleccionado = (cmbRol.SelectedItem as Rol)?.Id;
+
+            cmbRol.DataSource = controladoraRoles.ObtenerTodos();
+            cmbRol.ValueMember = nameof(Rol.Id);
+
+            if (seleccionado.HasValue)
+                cmbRol.SelectedValue = seleccionado.Value;
+            else
+                cmbRol.SelectedIndex = -1;
         }
 
         private void CargarLista()
@@ -38,7 +53,7 @@ namespace GestionMaterialesConstruccion.Formularios
             txtLegajo.Text = empleadoSeleccionado.Legajo;
             txtEmail.Text = empleadoSeleccionado.Email;
             txtContrasenia.Text = empleadoSeleccionado.Contrasenia;
-            cmbRol.SelectedItem = empleadoSeleccionado.Rol;
+            cmbRol.SelectedValue = empleadoSeleccionado.RolId;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -53,7 +68,7 @@ namespace GestionMaterialesConstruccion.Formularios
                     Legajo = txtLegajo.Text.Trim(),
                     Email = txtEmail.Text.Trim(),
                     Contrasenia = txtContrasenia.Text,
-                    Rol = (RolEmpleado)(cmbRol.SelectedItem ?? RolEmpleado.Empleado)
+                    RolId = (cmbRol.SelectedItem as Rol)?.Id ?? 0
                 };
 
                 controladora.Agregar(empleado);
@@ -81,7 +96,7 @@ namespace GestionMaterialesConstruccion.Formularios
                 empleadoSeleccionado.Legajo = txtLegajo.Text.Trim();
                 empleadoSeleccionado.Email = txtEmail.Text.Trim();
                 empleadoSeleccionado.Contrasenia = txtContrasenia.Text;
-                empleadoSeleccionado.Rol = (RolEmpleado)(cmbRol.SelectedItem ?? RolEmpleado.Empleado);
+                empleadoSeleccionado.RolId = (cmbRol.SelectedItem as Rol)?.Id ?? 0;
 
                 controladora.Modificar(empleadoSeleccionado);
                 CargarLista();
@@ -111,9 +126,21 @@ namespace GestionMaterialesConstruccion.Formularios
             }
         }
 
+        private void btnCrearRol_Click(object sender, EventArgs e)
+        {
+            using var frm = new FrmRoles();
+            frm.ShowDialog();
+            CargarRoles();
+        }
+
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             LimpiarFormulario();
+        }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            Close();
         }
 
         private void LimpiarFormulario()
@@ -126,7 +153,8 @@ namespace GestionMaterialesConstruccion.Formularios
             txtLegajo.Clear();
             txtEmail.Clear();
             txtContrasenia.Clear();
-            cmbRol.SelectedIndex = -1;
+            if (cmbRol.Items.Count > 0)
+                cmbRol.SelectedIndex = -1;
             lblMensaje.Text = string.Empty;
         }
     }
