@@ -17,9 +17,15 @@ de dominio, diagramas de secuencia y clases, y prototipos de interfaz).
 Además:
 - **Roles configurables**: desde "Gestionar Empleados" hay un botón **Crear
   Rol** que abre un formulario para crear/editar roles, eligiendo a qué
-  pantallas del sistema da acceso cada uno (tildando permisos). El menú
-  principal habilita o deshabilita cada botón según los permisos del rol del
-  empleado logueado.
+  pantallas del sistema da acceso cada uno (tildando permisos) y qué
+  empleados lo tienen asignado (tildando empleados). El menú principal
+  habilita o deshabilita cada botón según los permisos del rol del empleado
+  logueado.
+- **Asignación de rol solo desde "Gestionar Roles"**: en "Gestionar
+  Empleados" el rol se muestra como una etiqueta de solo lectura, no se
+  puede elegir ahí. Un empleado recién creado queda con **"Rol no
+  asignado"** (sin ningún permiso) hasta que alguien con acceso a
+  "Gestionar Roles" lo asigne a un rol.
 - **Botón Volver**: todos los formularios de gestión (Proveedores,
   Materiales, Compras, Detalle de Compra, Empleados, Roles) tienen un botón
   "Volver" que cierra la pantalla actual y devuelve el control a la anterior,

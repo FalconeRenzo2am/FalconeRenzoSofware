@@ -37,9 +37,7 @@ namespace GestionMaterialesConstruccion.Controladoras
             if (contexto.Empleados.Any(e => e.Email == empleado.Email))
                 throw new InvalidOperationException("Ya existe un empleado registrado con ese email.");
 
-            if (!contexto.Roles.Any(r => r.Id == empleado.RolId))
-                throw new InvalidOperationException("Debe seleccionar un rol válido.");
-
+            empleado.RolId = null;
             contexto.Empleados.Add(empleado);
             contexto.SaveChanges();
         }
@@ -56,16 +54,13 @@ namespace GestionMaterialesConstruccion.Controladoras
             if (contexto.Empleados.Any(e => e.Email == empleado.Email && e.Id != empleado.Id))
                 throw new InvalidOperationException("Ya existe otro empleado registrado con ese email.");
 
-            if (!contexto.Roles.Any(r => r.Id == empleado.RolId))
-                throw new InvalidOperationException("Debe seleccionar un rol válido.");
-
+            // El rol NO se modifica desde acá: solo se asigna/desasigna desde "Gestionar Roles".
             existente.Nombre = empleado.Nombre;
             existente.Apellido = empleado.Apellido;
             existente.Dni = empleado.Dni;
             existente.Legajo = empleado.Legajo;
             existente.Email = empleado.Email;
             existente.Contrasenia = empleado.Contrasenia;
-            existente.RolId = empleado.RolId;
 
             contexto.SaveChanges();
         }
@@ -92,9 +87,6 @@ namespace GestionMaterialesConstruccion.Controladoras
             {
                 throw new ArgumentException("Todos los campos son obligatorios.");
             }
-
-            if (empleado.RolId <= 0)
-                throw new ArgumentException("Debe seleccionar un rol.");
         }
     }
 }

@@ -4,12 +4,13 @@ using GestionMaterialesConstruccion.Modelos;
 namespace GestionMaterialesConstruccion.Formularios
 {
     /// <summary>
-    /// Creación y edición de roles: nombre, descripción y a qué pantallas del sistema
-    /// tiene acceso (sus permisos).
+    /// Creación y edición de roles: nombre, descripción, a qué pantallas del sistema
+    /// tiene acceso (permisos) y qué empleados lo tienen asignado.
     /// </summary>
     public partial class FrmRoles : Form
     {
         private readonly RolControladora controladora = new();
+        private readonly EmpleadoControladora controladoraEmpleados = new();
         private List<Rol> roles = new();
         private Rol rolSeleccionado;
 
@@ -17,6 +18,7 @@ namespace GestionMaterialesConstruccion.Formularios
         {
             InitializeComponent();
             CargarPermisos();
+            CargarEmpleados();
             CargarLista();
         }
 
@@ -25,6 +27,13 @@ namespace GestionMaterialesConstruccion.Formularios
             clbPermisos.Items.Clear();
             foreach (var permiso in controladora.ObtenerPermisosDisponibles())
                 clbPermisos.Items.Add(permiso);
+        }
+
+        private void CargarEmpleados()
+        {
+            clbEmpleados.Items.Clear();
+            foreach (var empleado in controladoraEmpleados.ObtenerTodos())
+                clbEmpleados.Items.Add(empleado);
         }
 
         private void CargarLista()
@@ -46,8 +55,13 @@ namespace GestionMaterialesConstruccion.Formularios
             for (int i = 0; i < clbPermisos.Items.Count; i++)
             {
                 var permiso = (Permiso)clbPermisos.Items[i];
-                bool tieneAcceso = rolSeleccionado.Permisos.Any(p => p.Id == permiso.Id);
-                clbPermisos.SetItemChecked(i, tieneAcceso);
+                clbPermisos.SetItemChecked(i, rolSeleccionado.Permisos.Any(p => p.Id == permiso.Id));
+            }
+
+            for (int i = 0; i < clbEmpleados.Items.Count; i++)
+            {
+                var empleado = (Empleado)clbEmpleados.Items[i];
+                clbEmpleados.SetItemChecked(i, empleado.RolId == rolSeleccionado.Id);
             }
         }
 
@@ -61,7 +75,8 @@ namespace GestionMaterialesConstruccion.Formularios
                     Descripcion = txtDescripcion.Text.Trim()
                 };
 
-                controladora.Agregar(rol, ObtenerPermisosSeleccionados());
+                controladora.Agregar(rol, ObtenerPermisosSeleccionados(), ObtenerEmpleadosSeleccionados());
+                CargarEmpleados();
                 CargarLista();
             }
             catch (Exception ex)
@@ -83,7 +98,8 @@ namespace GestionMaterialesConstruccion.Formularios
                 rolSeleccionado.Nombre = txtNombre.Text.Trim();
                 rolSeleccionado.Descripcion = txtDescripcion.Text.Trim();
 
-                controladora.Modificar(rolSeleccionado, ObtenerPermisosSeleccionados());
+                controladora.Modificar(rolSeleccionado, ObtenerPermisosSeleccionados(), ObtenerEmpleadosSeleccionados());
+                CargarEmpleados();
                 CargarLista();
             }
             catch (Exception ex)
@@ -103,6 +119,7 @@ namespace GestionMaterialesConstruccion.Formularios
             try
             {
                 controladora.Eliminar(rolSeleccionado.Id);
+                CargarEmpleados();
                 CargarLista();
             }
             catch (Exception ex)
@@ -126,6 +143,11 @@ namespace GestionMaterialesConstruccion.Formularios
             return clbPermisos.CheckedItems.Cast<Permiso>().Select(p => p.Id).ToList();
         }
 
+        private List<int> ObtenerEmpleadosSeleccionados()
+        {
+            return clbEmpleados.CheckedItems.Cast<Empleado>().Select(e => e.Id).ToList();
+        }
+
         private void LimpiarFormulario()
         {
             rolSeleccionado = null;
@@ -134,6 +156,8 @@ namespace GestionMaterialesConstruccion.Formularios
             txtDescripcion.Clear();
             for (int i = 0; i < clbPermisos.Items.Count; i++)
                 clbPermisos.SetItemChecked(i, false);
+            for (int i = 0; i < clbEmpleados.Items.Count; i++)
+                clbEmpleados.SetItemChecked(i, false);
             lblMensaje.Text = string.Empty;
         }
     }

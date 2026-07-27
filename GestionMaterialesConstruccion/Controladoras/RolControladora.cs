@@ -5,7 +5,8 @@ using Microsoft.EntityFrameworkCore;
 namespace GestionMaterialesConstruccion.Controladoras
 {
     /// <summary>
-    /// Creación y edición de roles y los permisos (accesos) que otorgan dentro del sistema.
+    /// Creación y edición de roles, los permisos (accesos) que otorgan dentro del sistema,
+    /// y qué empleados tienen asignado cada rol.
     /// </summary>
     public class RolControladora
     {
@@ -21,7 +22,7 @@ namespace GestionMaterialesConstruccion.Controladoras
             return contexto.Permisos.OrderBy(p => p.Nombre).ToList();
         }
 
-        public void Agregar(Rol rol, List<int> permisoIds)
+        public void Agregar(Rol rol, List<int> permisoIds, List<int> empleadoIds)
         {
             ValidarDatos(rol);
 
@@ -32,9 +33,12 @@ namespace GestionMaterialesConstruccion.Controladoras
             rol.Permisos = contexto.Permisos.Where(p => permisoIds.Contains(p.Id)).ToList();
             contexto.Roles.Add(rol);
             contexto.SaveChanges();
+
+            AsignarEmpleados(contexto, rol.Id, empleadoIds);
+            contexto.SaveChanges();
         }
 
-        public void Modificar(Rol rol, List<int> permisoIds)
+        public void Modificar(Rol rol, List<int> permisoIds, List<int> empleadoIds)
         {
             ValidarDatos(rol);
 
@@ -50,6 +54,7 @@ namespace GestionMaterialesConstruccion.Controladoras
             existente.Descripcion = rol.Descripcion;
             existente.Permisos = contexto.Permisos.Where(p => permisoIds.Contains(p.Id)).ToList();
 
+            AsignarEmpleados(contexto, existente.Id, empleadoIds);
             contexto.SaveChanges();
         }
 
@@ -65,6 +70,24 @@ namespace GestionMaterialesConstruccion.Controladoras
 
             contexto.Roles.Remove(existente);
             contexto.SaveChanges();
+        }
+
+        /// <summary>
+        /// Los empleados tildados quedan con este rol; los que tenían este rol y se
+        /// destildaron quedan sin rol asignado (RolId = null).
+        /// </summary>
+        private static void AsignarEmpleados(AppDbContext contexto, int rolId, List<int> empleadoIds)
+        {
+            var empleadosDelRol = contexto.Empleados.Where(e => e.RolId == rolId).ToList();
+            foreach (var empleado in empleadosDelRol)
+            {
+                if (!empleadoIds.Contains(empleado.Id))
+                    empleado.RolId = null;
+            }
+
+            var empleadosAAsignar = contexto.Empleados.Where(e => empleadoIds.Contains(e.Id)).ToList();
+            foreach (var empleado in empleadosAAsignar)
+                empleado.RolId = rolId;
         }
 
         private static void ValidarDatos(Rol rol)

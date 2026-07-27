@@ -20,6 +20,8 @@ namespace GestionMaterialesConstruccion.Formularios
         private System.Windows.Forms.Label lblPermisos;
         private System.Windows.Forms.CheckedListBox clbPermisos;
         private System.Windows.Forms.ListBox lstRoles;
+        private System.Windows.Forms.Label lblEmpleadosRol;
+        private System.Windows.Forms.CheckedListBox clbEmpleados;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnEliminar;
@@ -36,6 +38,8 @@ namespace GestionMaterialesConstruccion.Formularios
             this.lblPermisos = new System.Windows.Forms.Label();
             this.clbPermisos = new System.Windows.Forms.CheckedListBox();
             this.lstRoles = new System.Windows.Forms.ListBox();
+            this.lblEmpleadosRol = new System.Windows.Forms.Label();
+            this.clbEmpleados = new System.Windows.Forms.CheckedListBox();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
@@ -76,17 +80,29 @@ namespace GestionMaterialesConstruccion.Formularios
             //
             this.clbPermisos.CheckOnClick = true;
             this.clbPermisos.Location = new System.Drawing.Point(20, 115);
-            this.clbPermisos.Size = new System.Drawing.Size(300, 140);
+            this.clbPermisos.Size = new System.Drawing.Size(300, 150);
             //
             // lstRoles
             //
             this.lstRoles.Location = new System.Drawing.Point(360, 17);
-            this.lstRoles.Size = new System.Drawing.Size(320, 238);
+            this.lstRoles.Size = new System.Drawing.Size(320, 150);
             this.lstRoles.SelectedIndexChanged += new System.EventHandler(this.lstRoles_SelectedIndexChanged);
+            //
+            // lblEmpleadosRol
+            //
+            this.lblEmpleadosRol.Location = new System.Drawing.Point(360, 175);
+            this.lblEmpleadosRol.Size = new System.Drawing.Size(250, 23);
+            this.lblEmpleadosRol.Text = "Empleados con este rol";
+            //
+            // clbEmpleados
+            //
+            this.clbEmpleados.CheckOnClick = true;
+            this.clbEmpleados.Location = new System.Drawing.Point(360, 200);
+            this.clbEmpleados.Size = new System.Drawing.Size(320, 100);
             //
             // btnAceptar
             //
-            this.btnAceptar.Location = new System.Drawing.Point(20, 270);
+            this.btnAceptar.Location = new System.Drawing.Point(20, 320);
             this.btnAceptar.Size = new System.Drawing.Size(90, 30);
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
@@ -94,7 +110,7 @@ namespace GestionMaterialesConstruccion.Formularios
             //
             // btnModificar
             //
-            this.btnModificar.Location = new System.Drawing.Point(120, 270);
+            this.btnModificar.Location = new System.Drawing.Point(120, 320);
             this.btnModificar.Size = new System.Drawing.Size(90, 30);
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
@@ -102,7 +118,7 @@ namespace GestionMaterialesConstruccion.Formularios
             //
             // btnEliminar
             //
-            this.btnEliminar.Location = new System.Drawing.Point(220, 270);
+            this.btnEliminar.Location = new System.Drawing.Point(220, 320);
             this.btnEliminar.Size = new System.Drawing.Size(90, 30);
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
@@ -110,7 +126,7 @@ namespace GestionMaterialesConstruccion.Formularios
             //
             // btnCancelar
             //
-            this.btnCancelar.Location = new System.Drawing.Point(320, 270);
+            this.btnCancelar.Location = new System.Drawing.Point(320, 320);
             this.btnCancelar.Size = new System.Drawing.Size(90, 30);
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -118,7 +134,7 @@ namespace GestionMaterialesConstruccion.Formularios
             //
             // btnVolver
             //
-            this.btnVolver.Location = new System.Drawing.Point(20, 310);
+            this.btnVolver.Location = new System.Drawing.Point(20, 360);
             this.btnVolver.Size = new System.Drawing.Size(100, 30);
             this.btnVolver.Text = "Volver";
             this.btnVolver.UseVisualStyleBackColor = true;
@@ -127,12 +143,12 @@ namespace GestionMaterialesConstruccion.Formularios
             // lblMensaje
             //
             this.lblMensaje.ForeColor = System.Drawing.Color.Red;
-            this.lblMensaje.Location = new System.Drawing.Point(20, 350);
+            this.lblMensaje.Location = new System.Drawing.Point(20, 400);
             this.lblMensaje.Size = new System.Drawing.Size(660, 40);
             //
             // FrmRoles
             //
-            this.ClientSize = new System.Drawing.Size(700, 430);
+            this.ClientSize = new System.Drawing.Size(700, 480);
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.lblDescripcion);
@@ -140,6 +156,8 @@ namespace GestionMaterialesConstruccion.Formularios
             this.Controls.Add(this.lblPermisos);
             this.Controls.Add(this.clbPermisos);
             this.Controls.Add(this.lstRoles);
+            this.Controls.Add(this.lblEmpleadosRol);
+            this.Controls.Add(this.clbEmpleados);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnEliminar);

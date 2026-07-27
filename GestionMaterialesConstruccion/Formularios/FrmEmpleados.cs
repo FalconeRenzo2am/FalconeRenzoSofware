@@ -4,12 +4,12 @@ using GestionMaterialesConstruccion.Modelos;
 namespace GestionMaterialesConstruccion.Formularios
 {
     /// <summary>
-    /// R04 - Registrar Empleados.
+    /// R04 - Registrar Empleados. El rol NO se asigna acá: solo se muestra a modo
+    /// informativo. La asignación de rol se hace desde "Gestionar Roles".
     /// </summary>
     public partial class FrmEmpleados : Form
     {
         private readonly EmpleadoControladora controladora = new();
-        private readonly RolControladora controladoraRoles = new();
         private List<Empleado> empleados = new();
         private Empleado empleadoSeleccionado;
 
@@ -17,21 +17,7 @@ namespace GestionMaterialesConstruccion.Formularios
         {
             InitializeComponent();
             btnCrearRol.Enabled = SesionActual.TienePermiso(PermisosSistema.GestionRoles);
-            CargarRoles();
             CargarLista();
-        }
-
-        private void CargarRoles()
-        {
-            var seleccionado = (cmbRol.SelectedItem as Rol)?.Id;
-
-            cmbRol.DataSource = controladoraRoles.ObtenerTodos();
-            cmbRol.ValueMember = nameof(Rol.Id);
-
-            if (seleccionado.HasValue)
-                cmbRol.SelectedValue = seleccionado.Value;
-            else
-                cmbRol.SelectedIndex = -1;
         }
 
         private void CargarLista()
@@ -53,7 +39,7 @@ namespace GestionMaterialesConstruccion.Formularios
             txtLegajo.Text = empleadoSeleccionado.Legajo;
             txtEmail.Text = empleadoSeleccionado.Email;
             txtContrasenia.Text = empleadoSeleccionado.Contrasenia;
-            cmbRol.SelectedValue = empleadoSeleccionado.RolId;
+            lblRolValor.Text = empleadoSeleccionado.Rol?.Nombre ?? "Rol no asignado";
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -67,8 +53,7 @@ namespace GestionMaterialesConstruccion.Formularios
                     Dni = txtDni.Text.Trim(),
                     Legajo = txtLegajo.Text.Trim(),
                     Email = txtEmail.Text.Trim(),
-                    Contrasenia = txtContrasenia.Text,
-                    RolId = (cmbRol.SelectedItem as Rol)?.Id ?? 0
+                    Contrasenia = txtContrasenia.Text
                 };
 
                 controladora.Agregar(empleado);
@@ -96,7 +81,6 @@ namespace GestionMaterialesConstruccion.Formularios
                 empleadoSeleccionado.Legajo = txtLegajo.Text.Trim();
                 empleadoSeleccionado.Email = txtEmail.Text.Trim();
                 empleadoSeleccionado.Contrasenia = txtContrasenia.Text;
-                empleadoSeleccionado.RolId = (cmbRol.SelectedItem as Rol)?.Id ?? 0;
 
                 controladora.Modificar(empleadoSeleccionado);
                 CargarLista();
@@ -130,7 +114,7 @@ namespace GestionMaterialesConstruccion.Formularios
         {
             using var frm = new FrmRoles();
             frm.ShowDialog();
-            CargarRoles();
+            CargarLista();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -153,8 +137,7 @@ namespace GestionMaterialesConstruccion.Formularios
             txtLegajo.Clear();
             txtEmail.Clear();
             txtContrasenia.Clear();
-            if (cmbRol.Items.Count > 0)
-                cmbRol.SelectedIndex = -1;
+            lblRolValor.Text = "Rol no asignado";
             lblMensaje.Text = string.Empty;
         }
     }

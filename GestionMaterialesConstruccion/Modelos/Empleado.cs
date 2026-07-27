@@ -14,11 +14,11 @@ namespace GestionMaterialesConstruccion.Modelos
         [Required, MaxLength(100)]
         public string Contrasenia { get; set; }
 
-        public int RolId { get; set; }
+        public int? RolId { get; set; }
 
         [ForeignKey(nameof(RolId))]
         public Rol Rol { get; set; }
 
-        public override string ToString() => $"{Legajo} - {Apellido}, {Nombre} ({Rol?.Nombre})";
+        public override string ToString() => $"{Legajo} - {Apellido}, {Nombre} ({Rol?.Nombre ?? "Rol no asignado"})";
     }
 }

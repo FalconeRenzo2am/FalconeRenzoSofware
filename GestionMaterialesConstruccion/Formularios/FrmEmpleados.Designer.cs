@@ -26,7 +26,7 @@ namespace GestionMaterialesConstruccion.Formularios
         private System.Windows.Forms.Label lblContrasenia;
         private System.Windows.Forms.TextBox txtContrasenia;
         private System.Windows.Forms.Label lblRol;
-        private System.Windows.Forms.ComboBox cmbRol;
+        private System.Windows.Forms.Label lblRolValor;
         private System.Windows.Forms.ListBox lstEmpleados;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnModificar;
@@ -51,7 +51,7 @@ namespace GestionMaterialesConstruccion.Formularios
             this.lblContrasenia = new System.Windows.Forms.Label();
             this.txtContrasenia = new System.Windows.Forms.TextBox();
             this.lblRol = new System.Windows.Forms.Label();
-            this.cmbRol = new System.Windows.Forms.ComboBox();
+            this.lblRolValor = new System.Windows.Forms.Label();
             this.lstEmpleados = new System.Windows.Forms.ListBox();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
@@ -134,11 +134,12 @@ namespace GestionMaterialesConstruccion.Formularios
             this.lblRol.Size = new System.Drawing.Size(90, 23);
             this.lblRol.Text = "Rol";
             //
-            // cmbRol
+            // lblRolValor
             //
-            this.cmbRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbRol.Location = new System.Drawing.Point(120, 227);
-            this.cmbRol.Size = new System.Drawing.Size(200, 23);
+            this.lblRolValor.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic);
+            this.lblRolValor.Location = new System.Drawing.Point(120, 230);
+            this.lblRolValor.Size = new System.Drawing.Size(220, 23);
+            this.lblRolValor.Text = "Rol no asignado";
             //
             // lstEmpleados
             //
@@ -216,7 +217,7 @@ namespace GestionMaterialesConstruccion.Formularios
             this.Controls.Add(this.lblContrasenia);
             this.Controls.Add(this.txtContrasenia);
             this.Controls.Add(this.lblRol);
-            this.Controls.Add(this.cmbRol);
+            this.Controls.Add(this.lblRolValor);
             this.Controls.Add(this.lstEmpleados);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.btnModificar);
