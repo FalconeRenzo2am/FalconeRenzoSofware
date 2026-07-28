@@ -24,6 +24,7 @@ namespace GestionMaterialesConstruccion.Formularios
         {
             var proveedores = controladoraProveedores.ObtenerTodos();
             cmbProveedor.DataSource = proveedores;
+            cmbProveedor.DisplayMember = nameof(Proveedor.NombreCompleto);
             cmbProveedor.ValueMember = nameof(Proveedor.Id);
         }
 

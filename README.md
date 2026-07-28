@@ -54,7 +54,7 @@ secuencia de la documentación (Interfaz → Controladora → Entidad):
 3. Compilar el proyecto (restaura automáticamente los paquetes NuGet de
    Entity Framework Core al compilar).
 4. Ejecutar (F5). Al iniciar, la aplicación crea automáticamente la base de
-   datos `GestionMaterialesConstruccionDB_v2` en `(localdb)\mssqllocaldb` si
+   datos `GestionMaterialesConstruccionDB_v3` en `(localdb)\mssqllocaldb` si
    no existe, junto con dos roles (Administrador y Empleado) y un usuario
    administrador de prueba:
    - **Email:** `admin@falconesa.com`
@@ -69,7 +69,11 @@ secuencia de la documentación (Interfaz → Controladora → Entidad):
   genera automáticamente a partir de las entidades mediante
   `Database.EnsureCreated()`, reflejando el diagrama de entidad-relación de
   la documentación.
-- Si venías de una versión anterior del proyecto (con el rol fijo
-  Administrador/Empleado), el nombre de la base de datos cambió a
-  `GestionMaterialesConstruccionDB_v2` para que se genere de cero con el
-  nuevo esquema de Roles y Permisos, sin necesidad de borrar nada a mano.
+- Si venías de una versión anterior del proyecto, el nombre de la base de
+  datos cambió (ahora `GestionMaterialesConstruccionDB_v3`) para que se
+  genere de cero con el esquema más reciente, sin necesidad de borrar nada
+  a mano. Cada vez que cambia el modelo de datos de forma incompatible con
+  lo ya creado en tu LocalDB, va a aparecer un nombre de base nuevo acá.
+- El stock (`Cantidad`) de un material no se carga ni edita a mano desde
+  "Gestionar Materiales": arranca en 0 y solo se modifica al confirmar
+  líneas de Detalle de Compra (repone stock) o al eliminarlas (lo revierte).

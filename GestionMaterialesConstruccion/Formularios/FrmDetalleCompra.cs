@@ -25,6 +25,7 @@ namespace GestionMaterialesConstruccion.Formularios
         private void CargarMateriales()
         {
             cmbMaterial.DataSource = controladoraMateriales.ObtenerTodos();
+            cmbMaterial.DisplayMember = nameof(Material.Nombre);
             cmbMaterial.ValueMember = nameof(Material.Id);
         }
 

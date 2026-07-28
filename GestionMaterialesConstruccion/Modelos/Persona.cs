@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GestionMaterialesConstruccion.Modelos
 {
@@ -15,5 +16,8 @@ namespace GestionMaterialesConstruccion.Modelos
 
         [Required, MaxLength(20)]
         public string Dni { get; set; }
+
+        [NotMapped]
+        public string NombreCompleto => $"{Nombre} {Apellido}";
     }
 }

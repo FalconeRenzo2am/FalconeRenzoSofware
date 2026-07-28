@@ -23,6 +23,8 @@ namespace GestionMaterialesConstruccion.Controladoras
             if (contexto.Materiales.Any(m => m.Codigo == material.Codigo))
                 throw new InvalidOperationException("Ya existe un material con ese código.");
 
+            // El stock no se carga a mano: arranca en 0 y solo crece al confirmar compras.
+            material.Cantidad = 0;
             contexto.Materiales.Add(material);
             contexto.SaveChanges();
         }
@@ -39,10 +41,10 @@ namespace GestionMaterialesConstruccion.Controladoras
             if (contexto.Materiales.Any(m => m.Codigo == material.Codigo && m.Id != material.Id))
                 throw new InvalidOperationException("Ya existe otro material con ese código.");
 
+            // El stock (Cantidad) NO se modifica acá: solo cambia al confirmar compras.
             existente.Nombre = material.Nombre;
             existente.Codigo = material.Codigo;
             existente.Tipo = material.Tipo;
-            existente.Cantidad = material.Cantidad;
 
             contexto.SaveChanges();
         }

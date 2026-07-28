@@ -74,14 +74,15 @@ namespace GestionMaterialesConstruccion.Formularios
             // lblCantidad
             //
             this.lblCantidad.Location = new System.Drawing.Point(20, 90);
-            this.lblCantidad.Size = new System.Drawing.Size(90, 23);
-            this.lblCantidad.Text = "Cantidad";
+            this.lblCantidad.Size = new System.Drawing.Size(100, 23);
+            this.lblCantidad.Text = "Stock actual";
             //
             // numCantidad
             //
             this.numCantidad.Location = new System.Drawing.Point(120, 87);
             this.numCantidad.Size = new System.Drawing.Size(200, 23);
             this.numCantidad.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
+            this.numCantidad.Enabled = false;
             //
             // lblTipo
             //

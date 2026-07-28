@@ -9,7 +9,7 @@ namespace GestionMaterialesConstruccion.Datos
     public class AppDbContext : DbContext
     {
         private const string ConnectionString =
-            @"Server=(localdb)\mssqllocaldb;Database=GestionMaterialesConstruccionDB_v2;Trusted_Connection=True;TrustServerCertificate=True;";
+            @"Server=(localdb)\mssqllocaldb;Database=GestionMaterialesConstruccionDB_v3;Trusted_Connection=True;TrustServerCertificate=True;";
 
         public DbSet<Empleado> Empleados { get; set; }
         public DbSet<Proveedor> Proveedores { get; set; }
