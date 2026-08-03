@@ -14,7 +14,7 @@ namespace GestionMaterialesConstruccion.Controladoras
     {
         public List<Compra> ObtenerTodas()
         {
-            using var contexto = new AppDbContext();
+            using var contexto = ConexionBD.Instancia.CrearContexto();
             return contexto.Compras
                 .Include(c => c.Proveedor)
                 .Include(c => c.Detalles)
@@ -25,7 +25,7 @@ namespace GestionMaterialesConstruccion.Controladoras
 
         public Compra ObtenerPorId(int id)
         {
-            using var contexto = new AppDbContext();
+            using var contexto = ConexionBD.Instancia.CrearContexto();
             return contexto.Compras
                 .Include(c => c.Proveedor)
                 .Include(c => c.Detalles)
@@ -37,7 +37,7 @@ namespace GestionMaterialesConstruccion.Controladoras
         {
             ValidarDatos(compra);
 
-            using var contexto = new AppDbContext();
+            using var contexto = ConexionBD.Instancia.CrearContexto();
             if (contexto.Compras.Any(c => c.Codigo == compra.Codigo))
                 throw new InvalidOperationException("Ya existe una compra con ese código.");
 
@@ -53,7 +53,7 @@ namespace GestionMaterialesConstruccion.Controladoras
         {
             ValidarDatos(compra);
 
-            using var contexto = new AppDbContext();
+            using var contexto = ConexionBD.Instancia.CrearContexto();
             var existente = contexto.Compras.Find(compra.Id);
             if (existente == null)
                 throw new InvalidOperationException("La compra seleccionada ya no existe.");
@@ -71,7 +71,7 @@ namespace GestionMaterialesConstruccion.Controladoras
 
         public void Eliminar(int id)
         {
-            using var contexto = new AppDbContext();
+            using var contexto = ConexionBD.Instancia.CrearContexto();
             var existente = contexto.Compras
                 .Include(c => c.Detalles)
                 .FirstOrDefault(c => c.Id == id);
@@ -95,7 +95,7 @@ namespace GestionMaterialesConstruccion.Controladoras
         {
             ValidarDetalle(detalle);
 
-            using var contexto = new AppDbContext();
+            using var contexto = ConexionBD.Instancia.CrearContexto();
             var compra = contexto.Compras.Find(compraId);
             if (compra == null)
                 throw new InvalidOperationException("La compra seleccionada ya no existe.");
@@ -121,7 +121,7 @@ namespace GestionMaterialesConstruccion.Controladoras
         {
             ValidarDetalle(detalle);
 
-            using var contexto = new AppDbContext();
+            using var contexto = ConexionBD.Instancia.CrearContexto();
             var existente = contexto.DetallesCompra.Find(detalle.Id);
             if (existente == null)
                 throw new InvalidOperationException("El detalle seleccionado ya no existe.");
@@ -150,7 +150,7 @@ namespace GestionMaterialesConstruccion.Controladoras
 
         public void EliminarDetalle(int detalleId)
         {
-            using var contexto = new AppDbContext();
+            using var contexto = ConexionBD.Instancia.CrearContexto();
             var existente = contexto.DetallesCompra.Find(detalleId);
             if (existente == null)
                 throw new InvalidOperationException("El detalle seleccionado ya no existe.");

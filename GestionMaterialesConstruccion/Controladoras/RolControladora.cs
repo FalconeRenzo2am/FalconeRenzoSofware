@@ -12,13 +12,13 @@ namespace GestionMaterialesConstruccion.Controladoras
     {
         public List<Rol> ObtenerTodos()
         {
-            using var contexto = new AppDbContext();
+            using var contexto = ConexionBD.Instancia.CrearContexto();
             return contexto.Roles.Include(r => r.Permisos).OrderBy(r => r.Nombre).ToList();
         }
 
         public List<Permiso> ObtenerPermisosDisponibles()
         {
-            using var contexto = new AppDbContext();
+            using var contexto = ConexionBD.Instancia.CrearContexto();
             return contexto.Permisos.OrderBy(p => p.Nombre).ToList();
         }
 
@@ -26,7 +26,7 @@ namespace GestionMaterialesConstruccion.Controladoras
         {
             ValidarDatos(rol);
 
-            using var contexto = new AppDbContext();
+            using var contexto = ConexionBD.Instancia.CrearContexto();
             if (contexto.Roles.Any(r => r.Nombre == rol.Nombre))
                 throw new InvalidOperationException("Ya existe un rol con ese nombre.");
 
@@ -42,7 +42,7 @@ namespace GestionMaterialesConstruccion.Controladoras
         {
             ValidarDatos(rol);
 
-            using var contexto = new AppDbContext();
+            using var contexto = ConexionBD.Instancia.CrearContexto();
             var existente = contexto.Roles.Include(r => r.Permisos).FirstOrDefault(r => r.Id == rol.Id);
             if (existente == null)
                 throw new InvalidOperationException("El rol seleccionado ya no existe.");
@@ -60,7 +60,7 @@ namespace GestionMaterialesConstruccion.Controladoras
 
         public void Eliminar(int id)
         {
-            using var contexto = new AppDbContext();
+            using var contexto = ConexionBD.Instancia.CrearContexto();
             var existente = contexto.Roles.Find(id);
             if (existente == null)
                 throw new InvalidOperationException("El rol seleccionado ya no existe.");

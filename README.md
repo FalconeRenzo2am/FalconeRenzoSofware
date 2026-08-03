@@ -30,6 +30,12 @@ Además:
   Materiales, Compras, Detalle de Compra, Empleados, Roles) tienen un botón
   "Volver" que cierra la pantalla actual y devuelve el control a la anterior,
   sin necesidad de cerrar la ventana con la X.
+- **Reportes y Gráficos**: nueva pantalla con gráfico de barras (dibujado a
+  mano con GDI+, sin librerías externas) y el detalle numérico de dos
+  reportes: stock por material y total de compras por proveedor.
+- **Patrón Singleton**: el acceso a la base de datos pasa por una única
+  instancia (`Datos/ConexionBD`), en vez de que cada Controladora arme su
+  propia conexión por su cuenta.
 
 ## Arquitectura
 
@@ -37,9 +43,10 @@ El proyecto sigue la arquitectura en capas reflejada en los diagramas de
 secuencia de la documentación (Interfaz → Controladora → Entidad):
 
 - `Modelos/` – Entidades del dominio (Persona, Empleado, Proveedor, Material,
-  Compra, DetalleCompra, Rol, Permiso).
+  Compra, DetalleCompra, Rol, Permiso, ReporteItem).
 - `Datos/` – `AppDbContext` (Entity Framework Core, persistencia en SQL
-  Server LocalDB).
+  Server LocalDB) y `ConexionBD` (Singleton: punto único de acceso a la
+  base de datos).
 - `Controladoras/` – Lógica de negocio y validaciones de cada requerimiento.
 - `Formularios/` – Interfaz de usuario (Windows Forms), un formulario CRUD
   por cada requerimiento, siguiendo los prototipos de pantalla del PDF.
@@ -54,7 +61,7 @@ secuencia de la documentación (Interfaz → Controladora → Entidad):
 3. Compilar el proyecto (restaura automáticamente los paquetes NuGet de
    Entity Framework Core al compilar).
 4. Ejecutar (F5). Al iniciar, la aplicación crea automáticamente la base de
-   datos `GestionMaterialesConstruccionDB_v3` en `(localdb)\mssqllocaldb` si
+   datos `GestionMaterialesConstruccionDB_v4` en `(localdb)\mssqllocaldb` si
    no existe, junto con dos roles (Administrador y Empleado) y un usuario
    administrador de prueba:
    - **Email:** `admin@falconesa.com`
@@ -70,7 +77,7 @@ secuencia de la documentación (Interfaz → Controladora → Entidad):
   `Database.EnsureCreated()`, reflejando el diagrama de entidad-relación de
   la documentación.
 - Si venías de una versión anterior del proyecto, el nombre de la base de
-  datos cambió (ahora `GestionMaterialesConstruccionDB_v3`) para que se
+  datos cambió (ahora `GestionMaterialesConstruccionDB_v4`) para que se
   genere de cero con el esquema más reciente, sin necesidad de borrar nada
   a mano. Cada vez que cambia el modelo de datos de forma incompatible con
   lo ya creado en tu LocalDB, va a aparecer un nombre de base nuevo acá.

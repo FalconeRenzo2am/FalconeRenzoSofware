@@ -11,7 +11,7 @@ namespace GestionMaterialesConstruccion.Controladoras
     {
         public List<Material> ObtenerTodos()
         {
-            using var contexto = new AppDbContext();
+            using var contexto = ConexionBD.Instancia.CrearContexto();
             return contexto.Materiales.OrderBy(m => m.Nombre).ToList();
         }
 
@@ -19,7 +19,7 @@ namespace GestionMaterialesConstruccion.Controladoras
         {
             ValidarDatos(material);
 
-            using var contexto = new AppDbContext();
+            using var contexto = ConexionBD.Instancia.CrearContexto();
             if (contexto.Materiales.Any(m => m.Codigo == material.Codigo))
                 throw new InvalidOperationException("Ya existe un material con ese código.");
 
@@ -33,7 +33,7 @@ namespace GestionMaterialesConstruccion.Controladoras
         {
             ValidarDatos(material);
 
-            using var contexto = new AppDbContext();
+            using var contexto = ConexionBD.Instancia.CrearContexto();
             var existente = contexto.Materiales.Find(material.Id);
             if (existente == null)
                 throw new InvalidOperationException("El material seleccionado ya no existe.");
@@ -51,7 +51,7 @@ namespace GestionMaterialesConstruccion.Controladoras
 
         public void Eliminar(int id)
         {
-            using var contexto = new AppDbContext();
+            using var contexto = ConexionBD.Instancia.CrearContexto();
             var existente = contexto.Materiales.Find(id);
             if (existente == null)
                 throw new InvalidOperationException("El material seleccionado ya no existe.");

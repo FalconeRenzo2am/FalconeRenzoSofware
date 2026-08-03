@@ -11,7 +11,7 @@ namespace GestionMaterialesConstruccion.Controladoras
     {
         public List<Proveedor> ObtenerTodos()
         {
-            using var contexto = new AppDbContext();
+            using var contexto = ConexionBD.Instancia.CrearContexto();
             return contexto.Proveedores.OrderBy(p => p.Apellido).ToList();
         }
 
@@ -19,7 +19,7 @@ namespace GestionMaterialesConstruccion.Controladoras
         {
             ValidarDatos(proveedor);
 
-            using var contexto = new AppDbContext();
+            using var contexto = ConexionBD.Instancia.CrearContexto();
             if (contexto.Proveedores.Any(p => p.Codigo == proveedor.Codigo))
                 throw new InvalidOperationException("Ya existe un proveedor con ese código.");
 
@@ -31,7 +31,7 @@ namespace GestionMaterialesConstruccion.Controladoras
         {
             ValidarDatos(proveedor);
 
-            using var contexto = new AppDbContext();
+            using var contexto = ConexionBD.Instancia.CrearContexto();
             var existente = contexto.Proveedores.Find(proveedor.Id);
             if (existente == null)
                 throw new InvalidOperationException("El proveedor seleccionado ya no existe.");
@@ -51,7 +51,7 @@ namespace GestionMaterialesConstruccion.Controladoras
 
         public void Eliminar(int id)
         {
-            using var contexto = new AppDbContext();
+            using var contexto = ConexionBD.Instancia.CrearContexto();
             var existente = contexto.Proveedores.Find(id);
             if (existente == null)
                 throw new InvalidOperationException("El proveedor seleccionado ya no existe.");

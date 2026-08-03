@@ -10,7 +10,7 @@ namespace GestionMaterialesConstruccion
         {
             ApplicationConfiguration.Initialize();
 
-            using (var contexto = new AppDbContext())
+            using (var contexto = ConexionBD.Instancia.CrearContexto())
             {
                 contexto.Database.EnsureCreated();
             }

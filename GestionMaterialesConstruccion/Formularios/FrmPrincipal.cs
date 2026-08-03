@@ -22,6 +22,7 @@ namespace GestionMaterialesConstruccion.Formularios
             btnMateriales.Enabled = SesionActual.TienePermiso(PermisosSistema.GestionMateriales);
             btnCompras.Enabled = SesionActual.TienePermiso(PermisosSistema.GestionCompras);
             btnEmpleados.Enabled = SesionActual.TienePermiso(PermisosSistema.GestionEmpleados);
+            btnReportes.Enabled = SesionActual.TienePermiso(PermisosSistema.GestionReportes);
         }
 
         private void btnProveedores_Click(object sender, EventArgs e)
@@ -45,6 +46,12 @@ namespace GestionMaterialesConstruccion.Formularios
         private void btnEmpleados_Click(object sender, EventArgs e)
         {
             using var frm = new FrmEmpleados();
+            frm.ShowDialog();
+        }
+
+        private void btnReportes_Click(object sender, EventArgs e)
+        {
+            using var frm = new FrmReportes();
             frm.ShowDialog();
         }
 

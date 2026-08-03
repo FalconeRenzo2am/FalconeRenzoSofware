@@ -9,7 +9,7 @@ namespace GestionMaterialesConstruccion.Datos
     public class AppDbContext : DbContext
     {
         private const string ConnectionString =
-            @"Server=(localdb)\mssqllocaldb;Database=GestionMaterialesConstruccionDB_v3;Trusted_Connection=True;TrustServerCertificate=True;";
+            @"Server=(localdb)\mssqllocaldb;Database=GestionMaterialesConstruccionDB_v4;Trusted_Connection=True;TrustServerCertificate=True;";
 
         public DbSet<Empleado> Empleados { get; set; }
         public DbSet<Proveedor> Proveedores { get; set; }
@@ -86,9 +86,11 @@ namespace GestionMaterialesConstruccion.Datos
                             new { RolId = 1, PermisoId = 3 },
                             new { RolId = 1, PermisoId = 4 },
                             new { RolId = 1, PermisoId = 5 },
+                            new { RolId = 1, PermisoId = 6 },
                             new { RolId = 2, PermisoId = 1 },
                             new { RolId = 2, PermisoId = 2 },
-                            new { RolId = 2, PermisoId = 3 }
+                            new { RolId = 2, PermisoId = 3 },
+                            new { RolId = 2, PermisoId = 6 }
                         );
                     });
 
@@ -97,7 +99,8 @@ namespace GestionMaterialesConstruccion.Datos
                 new Permiso { Id = 2, Nombre = PermisosSistema.GestionMateriales, Descripcion = "Alta, baja y modificación de materiales" },
                 new Permiso { Id = 3, Nombre = PermisosSistema.GestionCompras, Descripcion = "Alta, baja y modificación de compras" },
                 new Permiso { Id = 4, Nombre = PermisosSistema.GestionEmpleados, Descripcion = "Alta, baja y modificación de empleados" },
-                new Permiso { Id = 5, Nombre = PermisosSistema.GestionRoles, Descripcion = "Creación y edición de roles del sistema" }
+                new Permiso { Id = 5, Nombre = PermisosSistema.GestionRoles, Descripcion = "Creación y edición de roles del sistema" },
+                new Permiso { Id = 6, Nombre = PermisosSistema.GestionReportes, Descripcion = "Visualización de reportes y gráficos" }
             );
 
             modelBuilder.Entity<Rol>().HasData(

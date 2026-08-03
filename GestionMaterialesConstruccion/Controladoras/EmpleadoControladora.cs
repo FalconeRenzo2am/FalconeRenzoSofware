@@ -11,13 +11,13 @@ namespace GestionMaterialesConstruccion.Controladoras
     {
         public List<Empleado> ObtenerTodos()
         {
-            using var contexto = new AppDbContext();
+            using var contexto = ConexionBD.Instancia.CrearContexto();
             return contexto.Empleados.Include(e => e.Rol).OrderBy(e => e.Apellido).ToList();
         }
 
         public Empleado IniciarSesion(string email, string contrasenia)
         {
-            using var contexto = new AppDbContext();
+            using var contexto = ConexionBD.Instancia.CrearContexto();
             var empleado = contexto.Empleados
                 .Include(e => e.Rol)
                     .ThenInclude(r => r.Permisos)
@@ -33,7 +33,7 @@ namespace GestionMaterialesConstruccion.Controladoras
         {
             ValidarDatos(empleado);
 
-            using var contexto = new AppDbContext();
+            using var contexto = ConexionBD.Instancia.CrearContexto();
             if (contexto.Empleados.Any(e => e.Email == empleado.Email))
                 throw new InvalidOperationException("Ya existe un empleado registrado con ese email.");
 
@@ -46,7 +46,7 @@ namespace GestionMaterialesConstruccion.Controladoras
         {
             ValidarDatos(empleado);
 
-            using var contexto = new AppDbContext();
+            using var contexto = ConexionBD.Instancia.CrearContexto();
             var existente = contexto.Empleados.Find(empleado.Id);
             if (existente == null)
                 throw new InvalidOperationException("El empleado seleccionado ya no existe.");
@@ -67,7 +67,7 @@ namespace GestionMaterialesConstruccion.Controladoras
 
         public void Eliminar(int id)
         {
-            using var contexto = new AppDbContext();
+            using var contexto = ConexionBD.Instancia.CrearContexto();
             var existente = contexto.Empleados.Find(id);
             if (existente == null)
                 throw new InvalidOperationException("El empleado seleccionado ya no existe.");

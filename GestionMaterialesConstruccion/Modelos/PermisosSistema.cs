@@ -11,5 +11,6 @@ namespace GestionMaterialesConstruccion.Modelos
         public const string GestionCompras = "GestionCompras";
         public const string GestionEmpleados = "GestionEmpleados";
         public const string GestionRoles = "GestionRoles";
+        public const string GestionReportes = "GestionReportes";
     }
 }

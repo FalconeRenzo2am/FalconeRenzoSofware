@@ -18,6 +18,7 @@ namespace GestionMaterialesConstruccion.Formularios
         private System.Windows.Forms.Button btnMateriales;
         private System.Windows.Forms.Button btnCompras;
         private System.Windows.Forms.Button btnEmpleados;
+        private System.Windows.Forms.Button btnReportes;
         private System.Windows.Forms.Button btnCerrarSesion;
 
         private void InitializeComponent()
@@ -27,6 +28,7 @@ namespace GestionMaterialesConstruccion.Formularios
             btnMateriales = new Button();
             btnCompras = new Button();
             btnEmpleados = new Button();
+            btnReportes = new Button();
             btnCerrarSesion = new Button();
             SuspendLayout();
             // 
@@ -78,25 +80,36 @@ namespace GestionMaterialesConstruccion.Formularios
             btnEmpleados.Text = "Gestionar Empleados ";
             btnEmpleados.UseVisualStyleBackColor = true;
             btnEmpleados.Click += btnEmpleados_Click;
-            // 
+            //
+            // btnReportes
+            //
+            btnReportes.Location = new Point(30, 270);
+            btnReportes.Name = "btnReportes";
+            btnReportes.Size = new Size(360, 40);
+            btnReportes.TabIndex = 5;
+            btnReportes.Text = "Reportes y Gráficos";
+            btnReportes.UseVisualStyleBackColor = true;
+            btnReportes.Click += btnReportes_Click;
+            //
             // btnCerrarSesion
-            // 
-            btnCerrarSesion.Location = new Point(30, 280);
+            //
+            btnCerrarSesion.Location = new Point(30, 330);
             btnCerrarSesion.Name = "btnCerrarSesion";
             btnCerrarSesion.Size = new Size(360, 30);
-            btnCerrarSesion.TabIndex = 5;
+            btnCerrarSesion.TabIndex = 6;
             btnCerrarSesion.Text = "Cerrar sesión";
             btnCerrarSesion.UseVisualStyleBackColor = true;
             btnCerrarSesion.Click += btnCerrarSesion_Click;
-            // 
+            //
             // FrmPrincipal
-            // 
-            ClientSize = new Size(420, 340);
+            //
+            ClientSize = new Size(420, 390);
             Controls.Add(lblBienvenida);
             Controls.Add(btnProveedores);
             Controls.Add(btnMateriales);
             Controls.Add(btnCompras);
             Controls.Add(btnEmpleados);
+            Controls.Add(btnReportes);
             Controls.Add(btnCerrarSesion);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
