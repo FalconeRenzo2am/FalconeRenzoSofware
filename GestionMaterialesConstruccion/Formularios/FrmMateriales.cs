@@ -35,6 +35,7 @@ namespace GestionMaterialesConstruccion.Formularios
             txtCodigo.Text = materialSeleccionado.Codigo;
             numCantidad.Value = materialSeleccionado.Cantidad;
             txtTipo.Text = materialSeleccionado.Tipo;
+            numStockMinimo.Value = materialSeleccionado.StockMinimo;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -46,7 +47,8 @@ namespace GestionMaterialesConstruccion.Formularios
                     Nombre = txtNombre.Text.Trim(),
                     Codigo = txtCodigo.Text.Trim(),
                     Cantidad = (int)numCantidad.Value,
-                    Tipo = txtTipo.Text.Trim()
+                    Tipo = txtTipo.Text.Trim(),
+                    StockMinimo = (int)numStockMinimo.Value
                 };
 
                 controladora.Agregar(material);
@@ -72,6 +74,7 @@ namespace GestionMaterialesConstruccion.Formularios
                 materialSeleccionado.Codigo = txtCodigo.Text.Trim();
                 materialSeleccionado.Cantidad = (int)numCantidad.Value;
                 materialSeleccionado.Tipo = txtTipo.Text.Trim();
+                materialSeleccionado.StockMinimo = (int)numStockMinimo.Value;
 
                 controladora.Modificar(materialSeleccionado);
                 CargarLista();
@@ -119,6 +122,7 @@ namespace GestionMaterialesConstruccion.Formularios
             txtCodigo.Clear();
             numCantidad.Value = 0;
             txtTipo.Clear();
+            numStockMinimo.Value = 5;
             lblMensaje.Text = string.Empty;
         }
     }

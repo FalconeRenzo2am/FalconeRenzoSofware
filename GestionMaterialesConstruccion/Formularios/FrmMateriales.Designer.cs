@@ -21,6 +21,8 @@ namespace GestionMaterialesConstruccion.Formularios
         private System.Windows.Forms.NumericUpDown numCantidad;
         private System.Windows.Forms.Label lblTipo;
         private System.Windows.Forms.TextBox txtTipo;
+        private System.Windows.Forms.Label lblStockMinimo;
+        private System.Windows.Forms.NumericUpDown numStockMinimo;
         private System.Windows.Forms.ListBox lstMateriales;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnModificar;
@@ -39,6 +41,8 @@ namespace GestionMaterialesConstruccion.Formularios
             this.numCantidad = new System.Windows.Forms.NumericUpDown();
             this.lblTipo = new System.Windows.Forms.Label();
             this.txtTipo = new System.Windows.Forms.TextBox();
+            this.lblStockMinimo = new System.Windows.Forms.Label();
+            this.numStockMinimo = new System.Windows.Forms.NumericUpDown();
             this.lstMateriales = new System.Windows.Forms.ListBox();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
@@ -47,6 +51,7 @@ namespace GestionMaterialesConstruccion.Formularios
             this.btnVolver = new System.Windows.Forms.Button();
             this.lblMensaje = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numCantidad)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numStockMinimo)).BeginInit();
             this.SuspendLayout();
             //
             // lblNombre
@@ -94,6 +99,19 @@ namespace GestionMaterialesConstruccion.Formularios
             //
             this.txtTipo.Location = new System.Drawing.Point(120, 122);
             this.txtTipo.Size = new System.Drawing.Size(200, 23);
+            //
+            // lblStockMinimo
+            //
+            this.lblStockMinimo.Location = new System.Drawing.Point(20, 160);
+            this.lblStockMinimo.Size = new System.Drawing.Size(100, 23);
+            this.lblStockMinimo.Text = "Stock mínimo";
+            //
+            // numStockMinimo
+            //
+            this.numStockMinimo.Location = new System.Drawing.Point(120, 157);
+            this.numStockMinimo.Size = new System.Drawing.Size(200, 23);
+            this.numStockMinimo.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
+            this.numStockMinimo.Value = new decimal(new int[] { 5, 0, 0, 0 });
             //
             // lstMateriales
             //
@@ -158,6 +176,8 @@ namespace GestionMaterialesConstruccion.Formularios
             this.Controls.Add(this.numCantidad);
             this.Controls.Add(this.lblTipo);
             this.Controls.Add(this.txtTipo);
+            this.Controls.Add(this.lblStockMinimo);
+            this.Controls.Add(this.numStockMinimo);
             this.Controls.Add(this.lstMateriales);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.btnModificar);
@@ -171,6 +191,7 @@ namespace GestionMaterialesConstruccion.Formularios
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestionar Materiales";
             ((System.ComponentModel.ISupportInitialize)(this.numCantidad)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numStockMinimo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
         }

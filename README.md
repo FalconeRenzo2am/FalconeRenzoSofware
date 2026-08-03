@@ -30,9 +30,21 @@ Además:
   Materiales, Compras, Detalle de Compra, Empleados, Roles) tienen un botón
   "Volver" que cierra la pantalla actual y devuelve el control a la anterior,
   sin necesidad de cerrar la ventana con la X.
-- **Reportes y Gráficos**: nueva pantalla con gráfico de barras (dibujado a
-  mano con GDI+, sin librerías externas) y el detalle numérico de dos
-  reportes: stock por material y total de compras por proveedor.
+- **Reportes y Gráficos**: pantalla estilo dashboard con indicadores (KPIs) y
+  8 reportes/gráficos (barras verticales y horizontales, torta y líneas,
+  todos dibujados a mano con GDI+, sin librerías externas), adaptados a lo
+  que existe en el sistema (compras, stock y proveedores; no hay ventas ni
+  clientes):
+  - KPIs: total comprado histórico, comprado este mes, materiales distintos
+    comprados, cantidad de proveedores, stock total disponible y materiales
+    en stock crítico.
+  - Reportes: Stock por Material, Compras por Proveedor, Compras por Mes
+    (con filtro de fechas), Materiales más Comprados, Compras por Categoría
+    (según el Tipo del material), Estado del Stock (normal/bajo/sin stock),
+    Evolución del Stock (con filtro de fechas) y Materiales sin Movimiento.
+  - El "stock crítico" se calcula contra un nuevo campo editable en
+    Materiales: **Stock mínimo** (umbral por material, no confundir con el
+    stock actual que sigue siendo de solo lectura).
 - **Patrón Singleton**: el acceso a la base de datos pasa por una única
   instancia (`Datos/ConexionBD`), en vez de que cada Controladora arme su
   propia conexión por su cuenta.
@@ -43,7 +55,7 @@ El proyecto sigue la arquitectura en capas reflejada en los diagramas de
 secuencia de la documentación (Interfaz → Controladora → Entidad):
 
 - `Modelos/` – Entidades del dominio (Persona, Empleado, Proveedor, Material,
-  Compra, DetalleCompra, Rol, Permiso, ReporteItem).
+  Compra, DetalleCompra, Rol, Permiso, ReporteItem, IndicadoresDashboard).
 - `Datos/` – `AppDbContext` (Entity Framework Core, persistencia en SQL
   Server LocalDB) y `ConexionBD` (Singleton: punto único de acceso a la
   base de datos).
@@ -61,7 +73,7 @@ secuencia de la documentación (Interfaz → Controladora → Entidad):
 3. Compilar el proyecto (restaura automáticamente los paquetes NuGet de
    Entity Framework Core al compilar).
 4. Ejecutar (F5). Al iniciar, la aplicación crea automáticamente la base de
-   datos `GestionMaterialesConstruccionDB_v4` en `(localdb)\mssqllocaldb` si
+   datos `GestionMaterialesConstruccionDB_v5` en `(localdb)\mssqllocaldb` si
    no existe, junto con dos roles (Administrador y Empleado) y un usuario
    administrador de prueba:
    - **Email:** `admin@falconesa.com`
@@ -77,7 +89,7 @@ secuencia de la documentación (Interfaz → Controladora → Entidad):
   `Database.EnsureCreated()`, reflejando el diagrama de entidad-relación de
   la documentación.
 - Si venías de una versión anterior del proyecto, el nombre de la base de
-  datos cambió (ahora `GestionMaterialesConstruccionDB_v4`) para que se
+  datos cambió (ahora `GestionMaterialesConstruccionDB_v5`) para que se
   genere de cero con el esquema más reciente, sin necesidad de borrar nada
   a mano. Cada vez que cambia el modelo de datos de forma incompatible con
   lo ya creado en tu LocalDB, va a aparecer un nombre de base nuevo acá.

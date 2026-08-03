@@ -18,6 +18,8 @@ namespace GestionMaterialesConstruccion.Modelos
 
         public int Cantidad { get; set; }
 
+        public int StockMinimo { get; set; } = 5;
+
         public override string ToString() => $"{Codigo} - {Nombre} (Stock: {Cantidad})";
     }
 }

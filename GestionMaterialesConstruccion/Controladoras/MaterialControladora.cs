@@ -23,7 +23,7 @@ namespace GestionMaterialesConstruccion.Controladoras
             if (contexto.Materiales.Any(m => m.Codigo == material.Codigo))
                 throw new InvalidOperationException("Ya existe un material con ese código.");
 
-            // El stock no se carga a mano: arranca en 0 y solo crece al confirmar compras.
+            // El stock (Cantidad) no se carga a mano: arranca en 0 y solo crece al confirmar compras.
             material.Cantidad = 0;
             contexto.Materiales.Add(material);
             contexto.SaveChanges();
@@ -42,9 +42,11 @@ namespace GestionMaterialesConstruccion.Controladoras
                 throw new InvalidOperationException("Ya existe otro material con ese código.");
 
             // El stock (Cantidad) NO se modifica acá: solo cambia al confirmar compras.
+            // El StockMinimo (umbral de stock crítico) sí se puede editar.
             existente.Nombre = material.Nombre;
             existente.Codigo = material.Codigo;
             existente.Tipo = material.Tipo;
+            existente.StockMinimo = material.StockMinimo;
 
             contexto.SaveChanges();
         }
@@ -74,6 +76,9 @@ namespace GestionMaterialesConstruccion.Controladoras
 
             if (material.Cantidad < 0)
                 throw new ArgumentException("La cantidad no puede ser negativa.");
+
+            if (material.StockMinimo < 0)
+                throw new ArgumentException("El stock mínimo no puede ser negativo.");
         }
     }
 }
