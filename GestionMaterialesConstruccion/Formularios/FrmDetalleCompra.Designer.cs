@@ -232,7 +232,6 @@ namespace GestionMaterialesConstruccion.Formularios
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Detalle de Compra";
             Font = new Font("Segoe UI", 12F);
-            PerformAutoScale();
             ((System.ComponentModel.ISupportInitialize)numCantidad).EndInit();
             ((System.ComponentModel.ISupportInitialize)numPrecioParcial).EndInit();
             ResumeLayout(false);

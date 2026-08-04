@@ -233,7 +233,6 @@ namespace GestionMaterialesConstruccion.Formularios
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestionar Materiales";
             this.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.PerformAutoScale();
             ((System.ComponentModel.ISupportInitialize)(this.numCantidad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numStockMinimo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPrecioUnitario)).EndInit();

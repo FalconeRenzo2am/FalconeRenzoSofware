@@ -238,7 +238,6 @@ namespace GestionMaterialesConstruccion.Formularios
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Gestionar Compras";
             Font = new Font("Segoe UI", 12F);
-            PerformAutoScale();
             ResumeLayout(false);
             PerformLayout();
         }

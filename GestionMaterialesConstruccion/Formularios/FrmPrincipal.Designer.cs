@@ -119,7 +119,6 @@ namespace GestionMaterialesConstruccion.Formularios
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Falcone SA - Gestión de Materiales de Construcción";
             Font = new Font("Segoe UI", 12F);
-            PerformAutoScale();
             ResumeLayout(false);
         }
     }

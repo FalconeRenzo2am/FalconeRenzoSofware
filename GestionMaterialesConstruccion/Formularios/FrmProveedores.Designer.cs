@@ -205,7 +205,6 @@ namespace GestionMaterialesConstruccion.Formularios
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestionar Proveedores";
             this.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.PerformAutoScale();
             this.ResumeLayout(false);
             this.PerformLayout();
         }

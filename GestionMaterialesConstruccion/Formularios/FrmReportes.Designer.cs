@@ -205,7 +205,6 @@ namespace GestionMaterialesConstruccion.Formularios
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reportes y Gráficos";
             this.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.PerformAutoScale();
             this.ResumeLayout(false);
         }
     }
