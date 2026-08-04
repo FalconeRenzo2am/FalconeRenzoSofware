@@ -213,7 +213,6 @@ namespace GestionMaterialesConstruccion.Formularios
             //
             // FrmCompras
             //
-            Font = new Font("Segoe UI", 12F);
             ClientSize = new Size(700, 400);
             Controls.Add(lblCodigo);
             Controls.Add(txtCodigo);
@@ -238,6 +237,8 @@ namespace GestionMaterialesConstruccion.Formularios
             Name = "FrmCompras";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Gestionar Compras";
+            Font = new Font("Segoe UI", 12F);
+            PerformAutoScale();
             ResumeLayout(false);
             PerformLayout();
         }

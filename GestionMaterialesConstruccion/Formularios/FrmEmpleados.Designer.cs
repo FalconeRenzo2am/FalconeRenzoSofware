@@ -205,7 +205,6 @@ namespace GestionMaterialesConstruccion.Formularios
             //
             // FrmEmpleados
             //
-            this.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.ClientSize = new System.Drawing.Size(700, 430);
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.txtNombre);
@@ -234,6 +233,8 @@ namespace GestionMaterialesConstruccion.Formularios
             this.Name = "FrmEmpleados";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestionar Empleados";
+            this.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.PerformAutoScale();
             this.ResumeLayout(false);
             this.PerformLayout();
         }

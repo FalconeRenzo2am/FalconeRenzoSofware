@@ -180,7 +180,6 @@ namespace GestionMaterialesConstruccion.Formularios
             //
             // FrmReportes
             //
-            this.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.ClientSize = new System.Drawing.Size(900, 550);
             this.Controls.Add(this.lblKpiComprasHistorico);
             this.Controls.Add(this.lblKpiComprasMes);
@@ -205,6 +204,8 @@ namespace GestionMaterialesConstruccion.Formularios
             this.Name = "FrmReportes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reportes y Gráficos";
+            this.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.PerformAutoScale();
             this.ResumeLayout(false);
         }
     }

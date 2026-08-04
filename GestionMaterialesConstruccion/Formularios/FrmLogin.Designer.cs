@@ -57,7 +57,6 @@ namespace GestionMaterialesConstruccion.Formularios
             this.txtEmail.Location = new System.Drawing.Point(140, 77);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(210, 23);
-            this.txtEmail.Text = "admin@falconesa.com";
             //
             // lblContrasenia
             //
@@ -71,7 +70,6 @@ namespace GestionMaterialesConstruccion.Formularios
             this.txtContrasenia.Location = new System.Drawing.Point(140, 117);
             this.txtContrasenia.Name = "txtContrasenia";
             this.txtContrasenia.Size = new System.Drawing.Size(210, 23);
-            this.txtContrasenia.Text = "admin123";
             this.txtContrasenia.UseSystemPasswordChar = true;
             //
             // btnIngresar
@@ -103,7 +101,6 @@ namespace GestionMaterialesConstruccion.Formularios
             // FrmLogin
             //
             this.AcceptButton = this.btnIngresar;
-            this.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.ClientSize = new System.Drawing.Size(380, 260);
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.lblEmail);
@@ -119,6 +116,8 @@ namespace GestionMaterialesConstruccion.Formularios
             this.Name = "FrmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Iniciar sesión";
+            this.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.PerformAutoScale();
             this.ResumeLayout(false);
             this.PerformLayout();
         }

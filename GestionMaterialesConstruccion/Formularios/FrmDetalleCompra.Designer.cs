@@ -208,7 +208,6 @@ namespace GestionMaterialesConstruccion.Formularios
             //
             // FrmDetalleCompra
             //
-            Font = new Font("Segoe UI", 12F);
             ClientSize = new Size(700, 300);
             Controls.Add(lblMaterial);
             Controls.Add(cmbMaterial);
@@ -232,6 +231,8 @@ namespace GestionMaterialesConstruccion.Formularios
             Name = "FrmDetalleCompra";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Detalle de Compra";
+            Font = new Font("Segoe UI", 12F);
+            PerformAutoScale();
             ((System.ComponentModel.ISupportInitialize)numCantidad).EndInit();
             ((System.ComponentModel.ISupportInitialize)numPrecioParcial).EndInit();
             ResumeLayout(false);
