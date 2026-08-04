@@ -47,6 +47,7 @@ namespace GestionMaterialesConstruccion.Formularios
         private readonly ReporteControladora controladora = new();
         private List<ReporteItem> datosActuales = new();
         private TipoGrafico tipoGraficoActual = TipoGrafico.BarrasVerticales;
+        private bool esGraficoEstadoStock = false;
 
         public FrmReportes()
         {
@@ -77,6 +78,7 @@ namespace GestionMaterialesConstruccion.Formularios
             lblKpiProveedores.Text = $"Proveedores: {kpis.CantidadProveedores}";
             lblKpiStockTotal.Text = $"Stock total disponible: {kpis.StockTotalDisponible}";
             lblKpiStockCritico.Text = $"Materiales en stock crítico: {kpis.MaterialesConStockCritico}";
+            lblKpiValorStock.Text = $"Valor total del stock: {kpis.ValorTotalStock:C}";
         }
 
         private void cmbReporte_SelectedIndexChanged(object sender, EventArgs e)
@@ -122,7 +124,7 @@ namespace GestionMaterialesConstruccion.Formularios
                     MostrarDatos(controladora.ObtenerComprasPorCategoria(), TipoGrafico.Torta);
                     break;
                 case TipoReporte.EstadoStock:
-                    MostrarDatos(controladora.ObtenerEstadoStock(), TipoGrafico.Torta);
+                    MostrarDatos(controladora.ObtenerEstadoStock(), TipoGrafico.Torta, esEstadoStock: true);
                     break;
                 case TipoReporte.EvolucionStock:
                     MostrarDatos(controladora.ObtenerEvolucionStock(desde, hasta), TipoGrafico.Lineas);
@@ -133,10 +135,11 @@ namespace GestionMaterialesConstruccion.Formularios
             }
         }
 
-        private void MostrarDatos(List<ReporteItem> datos, TipoGrafico tipoGrafico)
+        private void MostrarDatos(List<ReporteItem> datos, TipoGrafico tipoGrafico, bool esEstadoStock = false)
         {
             datosActuales = datos;
             tipoGraficoActual = tipoGrafico;
+            esGraficoEstadoStock = esEstadoStock;
 
             lstDatos.DataSource = null;
             lstDatos.DataSource = datosActuales;
@@ -151,6 +154,7 @@ namespace GestionMaterialesConstruccion.Formularios
         {
             datosActuales = new List<ReporteItem>();
             tipoGraficoActual = TipoGrafico.Ninguno;
+            esGraficoEstadoStock = false;
 
             var materiales = controladora.ObtenerMaterialesSinMovimiento();
             lstDatos.DataSource = null;
@@ -293,7 +297,9 @@ namespace GestionMaterialesConstruccion.Formularios
             {
                 var item = datosActuales[i];
                 float angulo = (float)(item.Valor / total) * 360f;
-                var color = PaletaColores[i % PaletaColores.Length];
+                var color = esGraficoEstadoStock
+                    ? ColorEstadoStock(item.Etiqueta)
+                    : PaletaColores[i % PaletaColores.Length];
 
                 using (var pincel = new SolidBrush(color))
                 {
@@ -309,6 +315,14 @@ namespace GestionMaterialesConstruccion.Formularios
                 y += 20;
             }
         }
+
+        private static Color ColorEstadoStock(string etiqueta) => etiqueta switch
+        {
+            "Sin stock" => Color.Red,
+            "Bajo" => Color.Gold,
+            "Normal" => Color.Green,
+            _ => Color.Gray
+        };
 
         private void DibujarLineas(Graphics g)
         {

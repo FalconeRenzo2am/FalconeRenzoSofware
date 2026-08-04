@@ -12,5 +12,6 @@ namespace GestionMaterialesConstruccion.Modelos
         public int CantidadProveedores { get; set; }
         public int StockTotalDisponible { get; set; }
         public int MaterialesConStockCritico { get; set; }
+        public decimal ValorTotalStock { get; set; }
     }
 }

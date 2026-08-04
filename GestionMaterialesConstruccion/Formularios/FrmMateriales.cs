@@ -36,6 +36,13 @@ namespace GestionMaterialesConstruccion.Formularios
             numCantidad.Value = materialSeleccionado.Cantidad;
             txtTipo.Text = materialSeleccionado.Tipo;
             numStockMinimo.Value = materialSeleccionado.StockMinimo;
+            numPrecioUnitario.Value = materialSeleccionado.PrecioUnitario;
+        }
+
+        private void numPrecioUnitario_ValueChanged(object sender, EventArgs e)
+        {
+            decimal valorTotal = numCantidad.Value * numPrecioUnitario.Value;
+            lblValorTotal.Text = valorTotal.ToString("C");
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -48,7 +55,8 @@ namespace GestionMaterialesConstruccion.Formularios
                     Codigo = txtCodigo.Text.Trim(),
                     Cantidad = (int)numCantidad.Value,
                     Tipo = txtTipo.Text.Trim(),
-                    StockMinimo = (int)numStockMinimo.Value
+                    StockMinimo = (int)numStockMinimo.Value,
+                    PrecioUnitario = numPrecioUnitario.Value
                 };
 
                 controladora.Agregar(material);
@@ -75,6 +83,7 @@ namespace GestionMaterialesConstruccion.Formularios
                 materialSeleccionado.Cantidad = (int)numCantidad.Value;
                 materialSeleccionado.Tipo = txtTipo.Text.Trim();
                 materialSeleccionado.StockMinimo = (int)numStockMinimo.Value;
+                materialSeleccionado.PrecioUnitario = numPrecioUnitario.Value;
 
                 controladora.Modificar(materialSeleccionado);
                 CargarLista();
@@ -123,6 +132,7 @@ namespace GestionMaterialesConstruccion.Formularios
             numCantidad.Value = 0;
             txtTipo.Clear();
             numStockMinimo.Value = 5;
+            numPrecioUnitario.Value = 0;
             lblMensaje.Text = string.Empty;
         }
     }

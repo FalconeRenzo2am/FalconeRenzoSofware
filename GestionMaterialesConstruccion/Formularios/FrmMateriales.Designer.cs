@@ -23,6 +23,10 @@ namespace GestionMaterialesConstruccion.Formularios
         private System.Windows.Forms.TextBox txtTipo;
         private System.Windows.Forms.Label lblStockMinimo;
         private System.Windows.Forms.NumericUpDown numStockMinimo;
+        private System.Windows.Forms.Label lblPrecioUnitario;
+        private System.Windows.Forms.NumericUpDown numPrecioUnitario;
+        private System.Windows.Forms.Label lblValorTotalTitulo;
+        private System.Windows.Forms.Label lblValorTotal;
         private System.Windows.Forms.ListBox lstMateriales;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnModificar;
@@ -43,6 +47,10 @@ namespace GestionMaterialesConstruccion.Formularios
             this.txtTipo = new System.Windows.Forms.TextBox();
             this.lblStockMinimo = new System.Windows.Forms.Label();
             this.numStockMinimo = new System.Windows.Forms.NumericUpDown();
+            this.lblPrecioUnitario = new System.Windows.Forms.Label();
+            this.numPrecioUnitario = new System.Windows.Forms.NumericUpDown();
+            this.lblValorTotalTitulo = new System.Windows.Forms.Label();
+            this.lblValorTotal = new System.Windows.Forms.Label();
             this.lstMateriales = new System.Windows.Forms.ListBox();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
@@ -52,6 +60,7 @@ namespace GestionMaterialesConstruccion.Formularios
             this.lblMensaje = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numCantidad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numStockMinimo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numPrecioUnitario)).BeginInit();
             this.SuspendLayout();
             //
             // lblNombre
@@ -113,6 +122,33 @@ namespace GestionMaterialesConstruccion.Formularios
             this.numStockMinimo.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
             this.numStockMinimo.Value = new decimal(new int[] { 5, 0, 0, 0 });
             //
+            // lblPrecioUnitario
+            //
+            this.lblPrecioUnitario.Location = new System.Drawing.Point(20, 195);
+            this.lblPrecioUnitario.Size = new System.Drawing.Size(100, 23);
+            this.lblPrecioUnitario.Text = "Precio unitario";
+            //
+            // numPrecioUnitario
+            //
+            this.numPrecioUnitario.Location = new System.Drawing.Point(120, 192);
+            this.numPrecioUnitario.Size = new System.Drawing.Size(200, 23);
+            this.numPrecioUnitario.DecimalPlaces = 2;
+            this.numPrecioUnitario.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
+            this.numPrecioUnitario.ValueChanged += new System.EventHandler(this.numPrecioUnitario_ValueChanged);
+            //
+            // lblValorTotalTitulo
+            //
+            this.lblValorTotalTitulo.Location = new System.Drawing.Point(20, 230);
+            this.lblValorTotalTitulo.Size = new System.Drawing.Size(100, 23);
+            this.lblValorTotalTitulo.Text = "Valor total";
+            //
+            // lblValorTotal
+            //
+            this.lblValorTotal.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblValorTotal.Location = new System.Drawing.Point(120, 230);
+            this.lblValorTotal.Size = new System.Drawing.Size(200, 23);
+            this.lblValorTotal.Text = "$0";
+            //
             // lstMateriales
             //
             this.lstMateriales.Location = new System.Drawing.Point(360, 17);
@@ -121,7 +157,7 @@ namespace GestionMaterialesConstruccion.Formularios
             //
             // btnAceptar
             //
-            this.btnAceptar.Location = new System.Drawing.Point(20, 240);
+            this.btnAceptar.Location = new System.Drawing.Point(20, 270);
             this.btnAceptar.Size = new System.Drawing.Size(90, 30);
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
@@ -129,7 +165,7 @@ namespace GestionMaterialesConstruccion.Formularios
             //
             // btnModificar
             //
-            this.btnModificar.Location = new System.Drawing.Point(120, 240);
+            this.btnModificar.Location = new System.Drawing.Point(120, 270);
             this.btnModificar.Size = new System.Drawing.Size(90, 30);
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
@@ -137,7 +173,7 @@ namespace GestionMaterialesConstruccion.Formularios
             //
             // btnEliminar
             //
-            this.btnEliminar.Location = new System.Drawing.Point(220, 240);
+            this.btnEliminar.Location = new System.Drawing.Point(220, 270);
             this.btnEliminar.Size = new System.Drawing.Size(90, 30);
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
@@ -145,7 +181,7 @@ namespace GestionMaterialesConstruccion.Formularios
             //
             // btnCancelar
             //
-            this.btnCancelar.Location = new System.Drawing.Point(320, 240);
+            this.btnCancelar.Location = new System.Drawing.Point(320, 270);
             this.btnCancelar.Size = new System.Drawing.Size(90, 30);
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -153,7 +189,7 @@ namespace GestionMaterialesConstruccion.Formularios
             //
             // btnVolver
             //
-            this.btnVolver.Location = new System.Drawing.Point(20, 280);
+            this.btnVolver.Location = new System.Drawing.Point(20, 310);
             this.btnVolver.Size = new System.Drawing.Size(100, 30);
             this.btnVolver.Text = "Volver";
             this.btnVolver.UseVisualStyleBackColor = true;
@@ -162,12 +198,12 @@ namespace GestionMaterialesConstruccion.Formularios
             // lblMensaje
             //
             this.lblMensaje.ForeColor = System.Drawing.Color.Red;
-            this.lblMensaje.Location = new System.Drawing.Point(20, 320);
+            this.lblMensaje.Location = new System.Drawing.Point(20, 350);
             this.lblMensaje.Size = new System.Drawing.Size(660, 40);
             //
             // FrmMateriales
             //
-            this.ClientSize = new System.Drawing.Size(700, 400);
+            this.ClientSize = new System.Drawing.Size(700, 440);
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.lblCodigo);
@@ -178,6 +214,10 @@ namespace GestionMaterialesConstruccion.Formularios
             this.Controls.Add(this.txtTipo);
             this.Controls.Add(this.lblStockMinimo);
             this.Controls.Add(this.numStockMinimo);
+            this.Controls.Add(this.lblPrecioUnitario);
+            this.Controls.Add(this.numPrecioUnitario);
+            this.Controls.Add(this.lblValorTotalTitulo);
+            this.Controls.Add(this.lblValorTotal);
             this.Controls.Add(this.lstMateriales);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.btnModificar);
@@ -192,6 +232,7 @@ namespace GestionMaterialesConstruccion.Formularios
             this.Text = "Gestionar Materiales";
             ((System.ComponentModel.ISupportInitialize)(this.numCantidad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numStockMinimo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numPrecioUnitario)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
         }

@@ -19,6 +19,7 @@ namespace GestionMaterialesConstruccion.Formularios
         private System.Windows.Forms.Label lblKpiProveedores;
         private System.Windows.Forms.Label lblKpiStockTotal;
         private System.Windows.Forms.Label lblKpiStockCritico;
+        private System.Windows.Forms.Label lblKpiValorStock;
         private System.Windows.Forms.Label lblReporte;
         private System.Windows.Forms.ComboBox cmbReporte;
         private System.Windows.Forms.Label lblDesde;
@@ -39,6 +40,7 @@ namespace GestionMaterialesConstruccion.Formularios
             this.lblKpiProveedores = new System.Windows.Forms.Label();
             this.lblKpiStockTotal = new System.Windows.Forms.Label();
             this.lblKpiStockCritico = new System.Windows.Forms.Label();
+            this.lblKpiValorStock = new System.Windows.Forms.Label();
             this.lblReporte = new System.Windows.Forms.Label();
             this.cmbReporte = new System.Windows.Forms.ComboBox();
             this.lblDesde = new System.Windows.Forms.Label();
@@ -95,46 +97,53 @@ namespace GestionMaterialesConstruccion.Formularios
             this.lblKpiStockCritico.Size = new System.Drawing.Size(280, 20);
             this.lblKpiStockCritico.Text = "Materiales en stock crítico: 0";
             //
+            // lblKpiValorStock
+            //
+            this.lblKpiValorStock.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblKpiValorStock.Location = new System.Drawing.Point(20, 69);
+            this.lblKpiValorStock.Size = new System.Drawing.Size(280, 20);
+            this.lblKpiValorStock.Text = "Valor total del stock: $0";
+            //
             // lblReporte
             //
-            this.lblReporte.Location = new System.Drawing.Point(20, 85);
+            this.lblReporte.Location = new System.Drawing.Point(20, 115);
             this.lblReporte.Size = new System.Drawing.Size(70, 23);
             this.lblReporte.Text = "Reporte:";
             //
             // cmbReporte
             //
             this.cmbReporte.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbReporte.Location = new System.Drawing.Point(95, 82);
+            this.cmbReporte.Location = new System.Drawing.Point(95, 112);
             this.cmbReporte.Size = new System.Drawing.Size(230, 23);
             this.cmbReporte.SelectedIndexChanged += new System.EventHandler(this.cmbReporte_SelectedIndexChanged);
             //
             // lblDesde
             //
-            this.lblDesde.Location = new System.Drawing.Point(345, 85);
+            this.lblDesde.Location = new System.Drawing.Point(345, 115);
             this.lblDesde.Size = new System.Drawing.Size(45, 23);
             this.lblDesde.Text = "Desde:";
             //
             // dtpDesde
             //
             this.dtpDesde.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDesde.Location = new System.Drawing.Point(390, 82);
+            this.dtpDesde.Location = new System.Drawing.Point(390, 112);
             this.dtpDesde.Size = new System.Drawing.Size(110, 23);
             //
             // lblHasta
             //
-            this.lblHasta.Location = new System.Drawing.Point(510, 85);
+            this.lblHasta.Location = new System.Drawing.Point(510, 115);
             this.lblHasta.Size = new System.Drawing.Size(40, 23);
             this.lblHasta.Text = "Hasta:";
             //
             // dtpHasta
             //
             this.dtpHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpHasta.Location = new System.Drawing.Point(550, 82);
+            this.dtpHasta.Location = new System.Drawing.Point(550, 112);
             this.dtpHasta.Size = new System.Drawing.Size(110, 23);
             //
             // btnAplicarFiltro
             //
-            this.btnAplicarFiltro.Location = new System.Drawing.Point(670, 81);
+            this.btnAplicarFiltro.Location = new System.Drawing.Point(670, 111);
             this.btnAplicarFiltro.Size = new System.Drawing.Size(110, 25);
             this.btnAplicarFiltro.Text = "Aplicar filtro";
             this.btnAplicarFiltro.UseVisualStyleBackColor = true;
@@ -144,18 +153,18 @@ namespace GestionMaterialesConstruccion.Formularios
             //
             this.pnlGrafico.BackColor = System.Drawing.Color.White;
             this.pnlGrafico.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlGrafico.Location = new System.Drawing.Point(20, 120);
+            this.pnlGrafico.Location = new System.Drawing.Point(20, 150);
             this.pnlGrafico.Size = new System.Drawing.Size(540, 340);
             this.pnlGrafico.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlGrafico_Paint);
             //
             // lstDatos
             //
-            this.lstDatos.Location = new System.Drawing.Point(575, 120);
+            this.lstDatos.Location = new System.Drawing.Point(575, 150);
             this.lstDatos.Size = new System.Drawing.Size(290, 340);
             //
             // btnVolver
             //
-            this.btnVolver.Location = new System.Drawing.Point(20, 470);
+            this.btnVolver.Location = new System.Drawing.Point(20, 500);
             this.btnVolver.Size = new System.Drawing.Size(100, 30);
             this.btnVolver.Text = "Volver";
             this.btnVolver.UseVisualStyleBackColor = true;
@@ -164,18 +173,19 @@ namespace GestionMaterialesConstruccion.Formularios
             // lblMensaje
             //
             this.lblMensaje.ForeColor = System.Drawing.Color.Gray;
-            this.lblMensaje.Location = new System.Drawing.Point(140, 470);
+            this.lblMensaje.Location = new System.Drawing.Point(140, 500);
             this.lblMensaje.Size = new System.Drawing.Size(720, 30);
             //
             // FrmReportes
             //
-            this.ClientSize = new System.Drawing.Size(900, 520);
+            this.ClientSize = new System.Drawing.Size(900, 550);
             this.Controls.Add(this.lblKpiComprasHistorico);
             this.Controls.Add(this.lblKpiComprasMes);
             this.Controls.Add(this.lblKpiMaterialesComprados);
             this.Controls.Add(this.lblKpiProveedores);
             this.Controls.Add(this.lblKpiStockTotal);
             this.Controls.Add(this.lblKpiStockCritico);
+            this.Controls.Add(this.lblKpiValorStock);
             this.Controls.Add(this.lblReporte);
             this.Controls.Add(this.cmbReporte);
             this.Controls.Add(this.lblDesde);

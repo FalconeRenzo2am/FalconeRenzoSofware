@@ -35,7 +35,8 @@ namespace GestionMaterialesConstruccion.Controladoras
                     .Count(),
                 CantidadProveedores = contexto.Proveedores.Count(),
                 StockTotalDisponible = contexto.Materiales.Sum(m => (int?)m.Cantidad) ?? 0,
-                MaterialesConStockCritico = contexto.Materiales.Count(m => m.Cantidad <= m.StockMinimo)
+                MaterialesConStockCritico = contexto.Materiales.Count(m => m.Cantidad <= m.StockMinimo),
+                ValorTotalStock = contexto.Materiales.Sum(m => (decimal?)(m.Cantidad * m.PrecioUnitario)) ?? 0
             };
         }
 

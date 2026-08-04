@@ -42,11 +42,12 @@ namespace GestionMaterialesConstruccion.Controladoras
                 throw new InvalidOperationException("Ya existe otro material con ese código.");
 
             // El stock (Cantidad) NO se modifica acá: solo cambia al confirmar compras.
-            // El StockMinimo (umbral de stock crítico) sí se puede editar.
+            // El StockMinimo y el PrecioUnitario sí se pueden editar.
             existente.Nombre = material.Nombre;
             existente.Codigo = material.Codigo;
             existente.Tipo = material.Tipo;
             existente.StockMinimo = material.StockMinimo;
+            existente.PrecioUnitario = material.PrecioUnitario;
 
             contexto.SaveChanges();
         }
@@ -79,6 +80,9 @@ namespace GestionMaterialesConstruccion.Controladoras
 
             if (material.StockMinimo < 0)
                 throw new ArgumentException("El stock mínimo no puede ser negativo.");
+
+            if (material.PrecioUnitario < 0)
+                throw new ArgumentException("El precio unitario no puede ser negativo.");
         }
     }
 }

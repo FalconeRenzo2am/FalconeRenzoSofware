@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GestionMaterialesConstruccion.Modelos
 {
@@ -20,6 +21,13 @@ namespace GestionMaterialesConstruccion.Modelos
 
         public int StockMinimo { get; set; } = 5;
 
-        public override string ToString() => $"{Codigo} - {Nombre} (Stock: {Cantidad})";
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal PrecioUnitario { get; set; }
+
+        [NotMapped]
+        public decimal ValorTotal => Cantidad * PrecioUnitario;
+
+        public override string ToString() =>
+            $"{Codigo} - {Nombre} (Stock: {Cantidad} x {PrecioUnitario:C} = {ValorTotal:C})";
     }
 }
