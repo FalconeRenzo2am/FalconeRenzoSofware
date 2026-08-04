@@ -62,8 +62,6 @@ namespace GestionMaterialesConstruccion.Formularios
             ((System.ComponentModel.ISupportInitialize)(this.numStockMinimo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPrecioUnitario)).BeginInit();
             this.SuspendLayout();
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             //
             // lblNombre
             //
@@ -232,7 +230,6 @@ namespace GestionMaterialesConstruccion.Formularios
             this.Name = "FrmMateriales";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestionar Materiales";
-            this.Font = new System.Drawing.Font("Segoe UI", 12F);
             ((System.ComponentModel.ISupportInitialize)(this.numCantidad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numStockMinimo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPrecioUnitario)).EndInit();

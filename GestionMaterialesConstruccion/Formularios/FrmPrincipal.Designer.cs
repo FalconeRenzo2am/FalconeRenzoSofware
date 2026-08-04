@@ -31,9 +31,7 @@ namespace GestionMaterialesConstruccion.Formularios
             btnReportes = new Button();
             btnCerrarSesion = new Button();
             SuspendLayout();
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            //
+            // 
             // lblBienvenida
             // 
             lblBienvenida.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
@@ -118,7 +116,6 @@ namespace GestionMaterialesConstruccion.Formularios
             Name = "FrmPrincipal";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Falcone SA - Gestión de Materiales de Construcción";
-            Font = new Font("Segoe UI", 12F);
             ResumeLayout(false);
         }
     }

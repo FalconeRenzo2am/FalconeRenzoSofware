@@ -104,7 +104,3 @@ secuencia de la documentación (Interfaz → Controladora → Entidad):
 - En el reporte "Estado del Stock" (gráfico de torta), los colores son fijos
   según el significado: rojo = sin stock, amarillo = stock bajo, verde =
   stock normal.
-- Todos los formularios usan `AutoScaleMode.Font`, con la fuente base en
-  "Segoe UI, 12pt" (antes 9pt): esto agranda proporcionalmente todos los
-  controles y el tamaño de cada ventana, para que se vea cómodo en pantallas
-  de notebook más chicas o de mayor densidad de píxeles.

@@ -55,8 +55,6 @@ namespace GestionMaterialesConstruccion.Formularios
             this.btnVolver = new System.Windows.Forms.Button();
             this.lblMensaje = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             //
             // lblNombre
             //
@@ -204,7 +202,6 @@ namespace GestionMaterialesConstruccion.Formularios
             this.Name = "FrmProveedores";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestionar Proveedores";
-            this.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.ResumeLayout(false);
             this.PerformLayout();
         }

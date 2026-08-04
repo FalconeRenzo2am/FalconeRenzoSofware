@@ -53,9 +53,7 @@ namespace GestionMaterialesConstruccion.Formularios
             btnVolver = new Button();
             lblMensaje = new Label();
             SuspendLayout();
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            //
+            // 
             // lblCodigo
             // 
             lblCodigo.Location = new Point(20, 20);
@@ -237,7 +235,6 @@ namespace GestionMaterialesConstruccion.Formularios
             Name = "FrmCompras";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Gestionar Compras";
-            Font = new Font("Segoe UI", 12F);
             ResumeLayout(false);
             PerformLayout();
         }
