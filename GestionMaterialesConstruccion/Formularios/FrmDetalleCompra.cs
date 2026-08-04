@@ -50,6 +50,12 @@ namespace GestionMaterialesConstruccion.Formularios
             numPrecioParcial.Value = detalleSeleccionado.PrecioParcial;
         }
 
+        private void numCantidadOPrecioParcial_ValueChanged(object sender, EventArgs e)
+        {
+            decimal precioPorUnidad = numCantidad.Value > 0 ? numPrecioParcial.Value / numCantidad.Value : 0;
+            lblPrecioPorUnidad.Text = precioPorUnidad.ToString("C");
+        }
+
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             try

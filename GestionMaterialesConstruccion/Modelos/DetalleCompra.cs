@@ -26,6 +26,14 @@ namespace GestionMaterialesConstruccion.Modelos
         [Column(TypeName = "decimal(18,2)")]
         public decimal PrecioParcial { get; set; }
 
-        public override string ToString() => $"{Codigo} - {Material?.Nombre} x{Cantidad} = {PrecioParcial:C}";
+        /// <summary>
+        /// Cuánto sale cada unidad del material en esta línea, calculado a partir
+        /// del precio final (PrecioParcial) que carga el usuario y la cantidad.
+        /// </summary>
+        [NotMapped]
+        public decimal PrecioPorUnidad => Cantidad > 0 ? PrecioParcial / Cantidad : 0;
+
+        public override string ToString() =>
+            $"{Codigo} - {Material?.Nombre} x{Cantidad} = {PrecioParcial:C} ({PrecioPorUnidad:C} c/u)";
     }
 }
