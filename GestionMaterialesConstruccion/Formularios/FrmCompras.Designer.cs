@@ -53,7 +53,9 @@ namespace GestionMaterialesConstruccion.Formularios
             btnVolver = new Button();
             lblMensaje = new Label();
             SuspendLayout();
-            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            //
             // lblCodigo
             // 
             lblCodigo.Location = new Point(20, 20);
@@ -211,6 +213,7 @@ namespace GestionMaterialesConstruccion.Formularios
             //
             // FrmCompras
             //
+            Font = new Font("Segoe UI", 12F);
             ClientSize = new Size(700, 400);
             Controls.Add(lblCodigo);
             Controls.Add(txtCodigo);

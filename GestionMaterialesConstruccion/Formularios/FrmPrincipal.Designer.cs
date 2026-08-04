@@ -31,7 +31,9 @@ namespace GestionMaterialesConstruccion.Formularios
             btnReportes = new Button();
             btnCerrarSesion = new Button();
             SuspendLayout();
-            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            //
             // lblBienvenida
             // 
             lblBienvenida.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
@@ -103,6 +105,7 @@ namespace GestionMaterialesConstruccion.Formularios
             //
             // FrmPrincipal
             //
+            Font = new Font("Segoe UI", 12F);
             ClientSize = new Size(420, 390);
             Controls.Add(lblBienvenida);
             Controls.Add(btnProveedores);

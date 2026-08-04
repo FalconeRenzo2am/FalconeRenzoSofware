@@ -47,6 +47,8 @@ namespace GestionMaterialesConstruccion.Formularios
             this.btnVolver = new System.Windows.Forms.Button();
             this.lblMensaje = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             //
             // lblNombre
             //
@@ -148,6 +150,7 @@ namespace GestionMaterialesConstruccion.Formularios
             //
             // FrmRoles
             //
+            this.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.ClientSize = new System.Drawing.Size(700, 480);
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.txtNombre);

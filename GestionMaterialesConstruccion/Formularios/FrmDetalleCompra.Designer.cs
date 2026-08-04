@@ -53,7 +53,9 @@ namespace GestionMaterialesConstruccion.Formularios
             ((System.ComponentModel.ISupportInitialize)numCantidad).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numPrecioParcial).BeginInit();
             SuspendLayout();
-            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            //
             // lblMaterial
             // 
             lblMaterial.Location = new Point(20, 20);
@@ -206,6 +208,7 @@ namespace GestionMaterialesConstruccion.Formularios
             //
             // FrmDetalleCompra
             //
+            Font = new Font("Segoe UI", 12F);
             ClientSize = new Size(700, 300);
             Controls.Add(lblMaterial);
             Controls.Add(cmbMaterial);

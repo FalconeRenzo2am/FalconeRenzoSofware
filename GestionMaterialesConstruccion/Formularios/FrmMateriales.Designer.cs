@@ -62,6 +62,8 @@ namespace GestionMaterialesConstruccion.Formularios
             ((System.ComponentModel.ISupportInitialize)(this.numStockMinimo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPrecioUnitario)).BeginInit();
             this.SuspendLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             //
             // lblNombre
             //
@@ -203,6 +205,7 @@ namespace GestionMaterialesConstruccion.Formularios
             //
             // FrmMateriales
             //
+            this.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.ClientSize = new System.Drawing.Size(700, 440);
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.txtNombre);

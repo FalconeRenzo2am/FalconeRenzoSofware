@@ -33,6 +33,8 @@ namespace GestionMaterialesConstruccion.Formularios
             this.btnSalir = new System.Windows.Forms.Button();
             this.lblMensaje = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             //
             // lblTitulo
             //
@@ -101,6 +103,7 @@ namespace GestionMaterialesConstruccion.Formularios
             // FrmLogin
             //
             this.AcceptButton = this.btnIngresar;
+            this.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.ClientSize = new System.Drawing.Size(380, 260);
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.lblEmail);
